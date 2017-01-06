@@ -1,9 +1,20 @@
+@font-face {
+    font-family: "etbook";
+    src: url("/stylesheets/et-book.woff") format('woff');
+}
+
 h1 {
     margin: 0;
 }
 
 body {
-    background: #eeeee2;
+    background: #fffff2;
+    font-family: etbook;
+    font-size: 1.2em;
+}
+
+p, li {
+    line-height: 1.5;
 }
 
 #content {
@@ -18,3 +29,4 @@ body {
 .site-header * {
     display: inline;
 }
+
