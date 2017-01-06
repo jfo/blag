@@ -30,3 +30,31 @@ p, li {
     display: inline;
 }
 
+pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 80%;
+    line-height: 1.45;
+    border-radius: 5px;
+    overflow-x: auto;
+    border: 1px black solid;
+    background: white;
+}
+
+pre code {
+    overflow-wrap: normal;
+    white-space: pre;
+    padding: 0;
+}
+
+code {
+    padding: 0 0.2em;
+    margin: 0;
+    border-radius: 3px;
+}
+
+blockquote {
+    padding: 0 15px;
+    color: #777;
+    border-left: 2px solid #ddd;
+}
