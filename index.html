@@ -6,14 +6,16 @@ layout: base
     {% for post in site.posts %}
         {% assign currentdate = post.date | date: "%Y" %}
             {% if currentdate != date %}
-                <th>
-                    {{ currentdate }}
-                </th>
+                <td>
+                    <div>
+                        <br><hr>{{ currentdate }} <hr>
+                    </div>
+                </td>
             {% assign date = currentdate %} 
         {% endif %}
         <tr>
             <td>
-                {{ post.date | date: "%b %-d" }}
+                <date>{{ post.date | date: "%b %d" }}</date>
             </td>
             <td>
                 <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>

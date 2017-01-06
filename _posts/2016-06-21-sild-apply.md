@@ -789,9 +789,6 @@ Ohhhhhhhhhhh noooooooooo waayyyyyyyyy
 ```
 
 ```
-```
-
-```
 ((concat c (concat o (concat n (concat c (concat a t))))) (concat o h) (concat y (concat e (concat a h))))
 ```
 

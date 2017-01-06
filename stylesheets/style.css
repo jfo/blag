@@ -3,14 +3,14 @@
     src: url("/stylesheets/et-book.woff") format('woff');
 }
 
-h1 {
-    margin: 0;
-}
-
 body {
     background: #fffff2;
     font-family: etbook;
     font-size: 1.2em;
+}
+
+h1 {
+    margin: 0;
 }
 
 p, li {
@@ -57,4 +57,41 @@ blockquote {
     padding: 0 15px;
     color: #777;
     border-left: 2px solid #ddd;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid gray;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height: 350px;
+}
+
+.content hr {
+    width: 30%;
+}
+
+@media (min-width : 550px) {
+
+    img { max-width: 80%; }
+
+}
+
+@media (min-width : 800px) {
+    img { max-width: 70%; }
+}
+
+@media (min-width : 1000px) {
+    img { max-width: 60%; }
 }

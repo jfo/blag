@@ -1,8 +1,8 @@
 title: blog.jfo.click
 
 permalink: /:title/
-# gems:
-#   - jekyll-feed
+gems:
+  - jekyll-feed
 exclude:
   - Gemfile
   - Gemfile.lock

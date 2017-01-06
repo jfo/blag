@@ -6,7 +6,7 @@ categories:
 - Music
 ---
 <a href="http://www.lepoissonrouge.com/lpr_events/a-tribute-to-portishead-roseland-nyc-live-july-24th-2013/"> 
-    <p style="text-align: left;">So this happened...</p>
+So this happened...
 </a>
 
 ...and because I am an idiot, I neglected to find out that this show was LIVE streamed for free while we performed it, or to tell everyone about it. It was absolutely terrific to be able to play this great and intricate music with such a talented group of people, and big big big big goods to Brittany, who worked SO HARD on this and transcribed the entire record for like a gazillion instruments note for note. I am so sure she is sleeping better now.

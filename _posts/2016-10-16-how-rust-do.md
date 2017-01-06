@@ -61,7 +61,8 @@ Table of Contents
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=getrust />
+<div id="getrust"></div>
+
 getting Rust
 -----------
 
@@ -360,7 +361,8 @@ fn main() {
 ```
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=mystery />
+<div id="mystery"></div>
+
 A mysterious warning
 --------------------
 
@@ -404,7 +406,8 @@ Now, the program will compile without any warnings at all, and write 'hi mom'
 to stdout when run.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=arbbytes />
+<div id="arbbytes"></div>
+
 writing arbitrary bytes
 ---------------
 
@@ -492,7 +495,8 @@ Turns out the compiler does do some type inference on integral types, after
 all!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=didsomethinghappen />
+<div id="didsomethinghappen"></div>
+
 did something happen?
 -------------------
 
@@ -800,7 +804,8 @@ the size of all the data + a constant of 36 for the header prior to the data
 chunk! That's the whole header!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=makesomenoise />
+<div id="makesomenoise"></div>
+
 Make some noise
 ---------------
 
@@ -899,7 +904,8 @@ individual random values.
 
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=dumpster />
+<div id="dumpster"></div>
+
 Let's refactor this dumpster fire!
 --------------------------------
 
@@ -971,7 +977,8 @@ but that's overkill right now.)
 > impunity [because I want to](https://www.youtube.com/watch?v=D_XI_290cfw).
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=stdoutlock />
+<div id="stdoutlock"></div>
+
 stdout.lock()
 --------------
 
@@ -1173,7 +1180,8 @@ fn write_header() {
 Sure thing! That's a lot clearer. Also I snuck some other stuff in there!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=someotherstuff />
+<div id="someotherstuff"></div>
+
 some other stuff
 -------------
 
@@ -1226,7 +1234,8 @@ Now I can write a wav file of arbitrary length of white noise!
 > TODO: link to that commit
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=passinglocks />
+<div id="passinglocks"></div>
+
 passing locks.
 ------------
 
@@ -1269,7 +1278,8 @@ fn main() {
 }
 ```
 <sub><a href='#toc'>toc</a></sub>
-<a name=notjust />
+<div id="notjust"></div>
+
 Not just stdout, pls.
 ----------------------
 
@@ -1347,7 +1357,8 @@ error[E0382]: use of moved value: `vec`
 Strap the eff in because it's our first encounter with
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=borrowchecker />
+<div id="borrowchecker"></div>
+
 The Borrow Checker
 ------------------
 
@@ -1446,7 +1457,8 @@ that.
 Isn't that something?
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=twofuncs />
+<div id="twofuncs"></div>
+
 two sound producing functions
 ---------------------------
 
@@ -1479,7 +1491,8 @@ fn make_some_noise<T: Write>(seconds: u32, handle: &mut T) {
 
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=comebacktowarnings />
+<div id="comebacktowarnings"></div>
+
 You said we were going to come back to those warnings.
 -------------------------------------------------------
 
@@ -1545,7 +1558,8 @@ OOOOOOH, the result is a [_Result_, with a capital
 `R`](https://doc.rust-lang.org/beta/std/result/)!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=resultsvsexceptions />
+<div id="resultsvsexceptions"></div>
+
 result returns vs exceptions
 --------------------------------
 
@@ -1766,7 +1780,8 @@ And now I don't have to suppress those warnings, because I've addressed them,
 and they don't show up!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=almostdoneass />
+<div id="almostdoneass"></div>
+
 almost done
 ----------------
 
@@ -1819,7 +1834,8 @@ it!](https://github.com/urthbound/rav/commit/f291ae4d50573c0591ef8496cbadce1e6c1
 <img src="/images/sinusoidal.png" />
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=whatsthatclick />
+<div id="whatsthatclick"></div>
+
 what's that click
 ------------------
 
@@ -1840,7 +1856,8 @@ know where to start the new waveform from. This is outside the scope of this pos
 but I thought it was pretty neat!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=coda />
+<div id="coda"></div>
+
 Coda
 ----
 

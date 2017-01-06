@@ -32,7 +32,8 @@ Table of Contents
 - [Advent of Coda](#coda)
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=chess />
+<div id="chess"></div>
+
 How about a nice game of chess?
 ======
 
@@ -196,7 +197,8 @@ puts acc.map { |e| e[5] }.join
 This returns `801b56a7`, which is, in fact, my password.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=expense />
+<div id="expense"></div>
+
 This is Expensive
 ======
 
@@ -240,8 +242,9 @@ And that's the rabbit. "What is a hashing algorithm, and how fast can I make it 
 And here is where I followed it.
 
 
-<a name=hole />
 <sub><a href='#toc'>toc</a></sub>
+<div id="hole"></div>
+
 Down the hole
 =============
 
@@ -264,8 +267,9 @@ canonical explanation of the algorithm and a reference implementation.
 So that's a good start. This is enough information to allow me to write my own
 version.
 
-<a name=own />
 <sub><a href='#toc'>toc</a></sub>
+<div id="own"></div>
+
 My own md5 function
 ===================
 
@@ -398,7 +402,8 @@ puts md5 "abbhdwsy"
 I'll just hold onto that for later.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=padding />
+<div id="padding"></div>
+
 Padding
 ========
 
@@ -634,7 +639,8 @@ orig_len_in_bits = (8 * message.length) & 0xffffffffffffffff
 ```
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=time />
+<div id="time"></div>
+
 Time to actually process the hash
 =============================
 
@@ -965,7 +971,8 @@ _then_ reverse the whole thing and join it together to get you...
 *gasp* _the final output_.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=output />
+<div id="output"></div>
+
 Output
 ======
 
@@ -985,7 +992,8 @@ b0d0113e0f3745b2eb8d0db1b6aad818
 Sweet.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=quite />
+<div id="quite"></div>
+
 I am quite sure my homegrown hashing function will outperform Ruby's built in version
 =====================================================================================
 
@@ -1020,7 +1028,8 @@ Date:   Fri Jan 16 12:13:05 1998 +0000
 ```
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=c />
+<div id="c"></div>
+
 Let's C.
 ==========
 
@@ -1380,7 +1389,8 @@ seconds, I could probably even beat the built in Ruby version if I found enough
 tricks and traps to optimize it... but I've got a better idea.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=opencl />
+<div id="opencl"></div>
+
 Act III: OpenCL
 ==============
 
@@ -1559,7 +1569,8 @@ over the gpu cores, and I should have that leet perf gain I wanted since the
 very beginning of this nerd snipe! Let's get crackin.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=crackin />
+<div id="crackin"></div>
+
 Crackin'
 ========
 

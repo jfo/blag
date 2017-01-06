@@ -4,6 +4,8 @@ date: 2016-09-20
 tags: rc
 layout: post
 ---
+{% raw %}
+
 
 I like doing things from total scratch, or at least what _seems_ like total
 scratch to me. For this reason a lot of modern javascript has baffled me. I can't
@@ -36,7 +38,7 @@ have to take my word for it](https://www.youtube.com/watch?v=JjuzxiuIbjs).
 
 This post got kind of long, so here's a
 
-<a name=toc />
+<div id="toc"></div>
 
 Table of Contents:
 ------------------
@@ -61,8 +63,9 @@ Anyway, let's start! This project will be called "boxes", and it will start
 from `mkdir`. The repo of all the code is
 [here](https://github.com/urthbound/boxes). You can follow along with it if you want to!
 
-<a name=mkdir />
-#mkdir
+<div id="mkdir"></div>
+
+# mkdir
 
 
 ```
@@ -120,9 +123,10 @@ that I don't care about yet because I haven't been bitten by awful dependency
 hell, or something. I want to know the _absolute simplest_ way to get this into
 my page. This is almost definitely not the best way to do this.
 
-https://facebook.github.io/react/downloads.html
 
-Looks like I can _download it directly from a CDN_. Ok.
+[Looks like I can _download it directly from a CDN_](https://facebook.github.io/react/downloads.html). 
+
+Ok!
 
 I'll dump those two script tags into my `index.html`'s `<head>`, like it's
 2003, and also console.log the two objects I get back. I know these are the
@@ -148,8 +152,10 @@ objects I get back from those calls because
 [Lol.](https://www.reddit.com/r/javascript/comments/3m6wyu/found_this_line_in_the_react_codebase_made_me/cvcyo4a)
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=singleel />
-#Injecting a single react element into the dom
+
+<div id="singleel"></div>
+
+# Injecting a single react element into the dom
 
 Ok, now I want to inject a React element into the dom. To do that I first need
 a reference to a container that already exists in the dom. Let's see if I can
@@ -380,7 +386,8 @@ Sweet, sweet code comments! This looks like a light wrapper around
 `ReactElement.createElement.apply()` that does a little bit of error handling.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=elprops />
+<div id="elprops"></div>
+
 # Element props
 
 The function takes three arguments: `type`, `props`, and `children`. We know
@@ -477,10 +484,9 @@ ReactDOM.render(
 ```
 
 <sub><a href='#toc'>toc</a></sub>
+<div id="children"></div>
 
-<a name=children />
-
-#Think of the Children
+# Think of the Children
 
 And as for the last argument to the function, `children`, You pass any child
 elements and/or strings and/or numbers and/or arrays you want to be rendered!
@@ -536,7 +542,7 @@ App is going to be so sweeeeeeeet!
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=notinline />
+<div id="notinline"></div>
 
 # ok let's not inline the js in the template
 
@@ -631,8 +637,9 @@ React.createElement(App,{ props: "this" },
 
 So here we are!
 
-<a name=elements />
-#Elements
+<div id="elements"></div>
+
+# Elements
 
 In JSX land, you can interpolate arbitrary javascript code by wrapping it in
 curlies. (Sorry, my syntax highlighter doesn't like inlined JSX at all.)
@@ -865,7 +872,7 @@ All of the following things are basically equivalent as written, where an
 element can be produced from either a pure function (the first two), or an
 Object (the last two).
 
-```js
+```jsx
 var randColor = function() {
     return '#'+Math.floor(Math.random()*16777215).toString(16);
 }
@@ -923,8 +930,9 @@ thing at the end of the day. JavaScript!
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=box />
-#Let's make a box
+<div id="box"></div>
+
+# Let's make a box
 
 With this in mind, let's make a box.
 
@@ -953,8 +961,9 @@ Everytime this is rendered (10 times a second!) we get a new color box. Let's ma
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=boxes />
-#Let's make two boxes
+<div id="boxes"></div>
+
+# Let's make two boxes
 
 ```js
 ReactDOM.render(
@@ -990,8 +999,9 @@ contained composable units!
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=row />
-#Let's make a row of boxes
+<div id="row"></div>
+
+# Let's make a row of boxes
 
 Now that boxes can be put next to each other, I can make a `Row` component that
 composes 5 of them side by side!
@@ -1010,8 +1020,9 @@ const Row = () => {
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=grid />
-#Let's make a grid of rows of boxes
+<div id="grid"></div>
+
+# Let's make a grid of rows of boxes
 
 I can do a very similar thing by stacking 5 rows together to make a `Grid` component.
 
@@ -1041,8 +1052,9 @@ setInterval(()=>{
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=sizing />
-#Dynamically sizing the grid with `props`
+<div id="sizing"></div>
+
+# Dynamically sizing the grid with `props`
 
 What I would like, though, is a dynamically sized grid. This is fairly simple-
 I can pass height and width in as props to the grid and set the style
@@ -1136,8 +1148,9 @@ const Row = (props) => {
 ```
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=dimensions />
-#Giving it dimensions
+<div id="dimensions"></div>
+
+# Giving it dimensions
 
 The grid really has two things I'd like to specify- the absolute size that I've been working with so far, and also the x y values of how many boxes are inside of it.
 
@@ -1227,8 +1240,9 @@ elements, then, so that react knows how to keep track of them.
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=multi />
-#Multiplying elements (with a cheeky little lambda)
+<div id="multi"></div>
+
+# Multiplying elements (with a cheeky little lambda)
 
 Ok! I need to create a little block that returns an array of elements whose
 length is the `count` that I pass in! This is a fun one! A first pass might
@@ -1314,9 +1328,9 @@ I thought that one could use some splainin' because... while it's very simple,
 it looks pretty weird.
 
 <sub><a href='#toc'>toc</a></sub>
+<div id="statedom"></div>
 
-<a name=statedom />
-#The State of the Dom
+# The State of the Dom
 
 Ok, it's about to get pretty wild in here. So far, this has been fairly
 straightforward... just passing in some props and generating a dom based on
@@ -1438,8 +1452,9 @@ of this post.)
 
 <sub><a href='#toc'>toc</a></sub>
 
-<a name=coda />
-#Coda
+<div id="coda"></div>
+
+# Coda
 
 This app doesn't really do that much! But I think I kind of sort of get the basic
 ideas behind react and also how to sort of use it! The next thing I would want
@@ -1465,3 +1480,5 @@ so here's that part: javascript node node react javascript jquery horse-js npm
 install.
 
 Thanks for reading!
+
+{% endraw %}
