@@ -217,7 +217,8 @@ Hello, World!
 Hello, Rust!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=cargo />
+<div id="cargo"></div>
+
 Cargo
 =====
 
@@ -265,7 +266,8 @@ plugin that I use all the time.
 
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=stdout />
+<div id="stdout"></div>
+
 stdout
 ======
 
@@ -548,7 +550,8 @@ stdout().write(&[0xe0, 0xb9, 0x80, 0xd5, 0x87, 0x20, 0xe0, 0xb9, 0x94, 0xe0, 0xb
 Neat!
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=writingthewaves />
+<div id="writingthewaves"></div>
+
 Writing the waves
 =================
 
