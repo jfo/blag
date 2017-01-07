@@ -150,7 +150,8 @@ Let's do something with rust! I'm going to write a program that produces a wave
 file that's going to sound really good I promise.
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=mkdir />
+<div id="mkdir"></div>
+
 mkdir
 =====
 
