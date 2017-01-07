@@ -14,7 +14,8 @@ and I totally couldn't let it go.
 This post got kind of ridiculously long. I'm sorry. But this snipe definitely
 took me for a ride. I hope it's interesting!
 
-<a name=toc />
+<div id="toc"></div>
+
 Table of Contents
 ====
 
@@ -783,7 +784,7 @@ This is a preperatory step. The only thing here we haven't seen before is the
 like this:
 
 ```ruby
-// Use binary integer part of the sines of integers (Radians) as constants:
+# Use binary integer part of the sines of integers (Radians) as constants:
 @constants = (0.. 63).map { |i| (2**32 * Math.sin(i + 1).abs).floor }
 ```
 
@@ -1295,7 +1296,7 @@ around directly:
 
 Oh and also I have that old friend `left_rotate()` defined as well:
 
-```
+```c
 unsigned long left_rotate(unsigned long x, int amount) {
     x = x & 0xffffffff;
     return ((x << amount) | (x >> (32 - amount))) & 0xffffffff;

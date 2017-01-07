@@ -95,3 +95,8 @@ iframe {
 @media (min-width : 1000px) {
     img { max-width: 60%; }
 }
+
+time {
+    font-size: 0.8em;
+    opacity:0.6;
+}
