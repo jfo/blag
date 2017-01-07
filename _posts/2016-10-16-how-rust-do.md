@@ -29,7 +29,8 @@ Feel free to lmk if anything is borked. I would be happy to know.
 
 The code for this is [here](https://github.com/urthbound/rav)
 
-<a name=toc />
+<div id="toc"></div>
+
 Table of Contents
 ----
 
