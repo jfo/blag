@@ -1797,7 +1797,7 @@ than my original solution would run, so I am pretty happy with that.
 
 
 <sub><a href='#toc'>toc</a></sub>
-<a name=coda />
+<div id="code"></div>
 
 Advent of Coda
 ==============
