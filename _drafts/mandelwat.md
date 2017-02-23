@@ -20,7 +20,7 @@ layout: post
 I wanted to learn about the Mandelbrot set. I thought, that's a neat thing!
 I wonder how I could make one. Turns out it's not that hard, really, but you
 have to understand the math and also what it _is_, and those things are pretty
-hard, at least for me, because I am not great at math even thought I love it
+hard, at least for me, because I am not great at math even though I love it
 and also the mandlebrot set is a fractal and fractals are _bonkers_.
 
 I thought, "Hey, I'm a Web Developer<sup>TM</sup> I should use JavaScript for
@@ -29,8 +29,8 @@ this because JavaScript is the best lol!" And so here we are.
 
 <hr>
 
-So before I can use LiveECMAJacaScript to draw a mandlebrot set, I have to have
-something to draw on! In html5 land, that thing is a `<canvas>`
+So before I can draw a mandlebrot set, I have to have something to draw on! In
+html5 land, that thing is a `<canvas>`
 
 That looks like this:
 
@@ -50,7 +50,7 @@ Here, let me put a border on it so you can see where it is:
 By default, the dimensions of a canvas element will be 150 pixels tall by 300
 pixels wide. This is a funny size, and I'm not sure why it's the default, but
 in any case you're almost always going to want to set the width and height
-yourself. You can do this with CSS, programatically in JS land, or as
+yourself. You can do this with either with CSS, programatically in JS land, or as
 attributes directly on the canvas element. Since there are [issues with using
 CSS for
 this](https://en.wikipedia.org/wiki/Canvas_element#Canvas_element_size_versus_drawing_surface_size),
@@ -93,7 +93,7 @@ context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext
 to affect the canvas itself. In the following example, notice that we access
 the canvas's `width` and `height` attributes to know how big a rectangle to
 draw! This is a common pattern, and it will be important later on. Right now
-I'm just drawing a rectangle to fill the whole canvas though. [Also I have a random color function](/how-react-do/#components)
+I'm just drawing a rectangle to fill the whole canvas though. [Also I have a random color function](https://www.paulirish.com/2009/random-hex-color-code-snippets/)
 
 <canvas id="ex1" style="border: 1px solid black;" width="200px" height="200px"></canvas>
 
@@ -243,13 +243,9 @@ really designed to do that for me. Just keep that in mind!
 <hr>
 
 I am interested in a slightly lower lever api than these drawn lines and
-strokes, though. How can I achieve granular control over each pixel? This is
-not that difficult actually!
-
-We can interact directly with the pixels in a canvas by using a representation
-called
+strokes, though. How can I achieve granular control over each pixel? We can
+interact directly with the pixels in a canvas by using a representation called
 [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData).
-Let's look at how that works!
 
 Calling `createImageData(height, width)` on a `CanvasRenderingContext2d` will
 return an ImageData object that contains three things:
@@ -266,7 +262,9 @@ it contains 400, because each pixel is represented by 4 bytes, one each for
 red, green, blue, and alpha (transparency) channels.
 [`Uint8ClampedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray)
 ensures that any value inside of itself is an integer between 0 and 255,
-simulating the hard type of a single byte.
+simulating the hard type of a single byte. This is important because javascript
+doesn't otherwise have any sense of integer types, and internally represents
+[all numerical values as 64 bit floats.](http://www.2ality.com/2012/04/number-encoding.html)
 
 You might expect a 2d array here, like this:
 
@@ -858,13 +856,14 @@ thing1 === thing2 // true
 
 You get the idea. Now, I _could_ write a deep checking set class for these
 coordinates, or build the coordinates into a real object that has a function
-that can do that, but I don't really want to do that. Instead I'm going to talk
+that can do that, but I don't really want to. Instead I'm going to talk
 about sets more generally!
 
 <hr>
 
 So, you can have a set that is just a defined set of whatever, and write all
-the whatevers out. That works great! But what about something like this:
+the whatevers out, like the example above.. That works great! But what about
+something like this:
 
 
 ```js
@@ -898,6 +897,7 @@ that particular set of numbers.
 </script>
 
 ```js
+// we're making the scale of the graph 20x20 here
 graph.r = 20;
 
 graph.render(function(coord) {
@@ -926,6 +926,7 @@ The set of all points whose x value is higher than 100 and whose y value is high
 </script>
 
 ```js
+// again, changing the scale of the graph.
 graph.r = 500;
 
 graph.render(function(coord) {
@@ -933,33 +934,368 @@ graph.render(function(coord) {
 });
 ```
 
-This is cool, then, I have a way of graphing sets! These sets are pretty boring though. But you know what's not boring?? 
+This is cool, then, I have a way of graphing sets! These sets are pretty boring though. But you know what's not boring??
 
-
-The Mandelbrot set is the set of complex numbers c for which the function
-`f(z) = z**2 + c` `f(z)=z**2 + c` does not
-diverge when iterated from `z=0`, i.e., for which the
-sequence {\displaystyle f_{c}(0)} {\displaystyle f_{c}(0)}, {\displaystyle
-f_{c}(f_{c}(0))} {\displaystyle f_{c}(f_{c}(0))}, etc., remains bounded in
-absolute value.
 
 The Mandelbrot Set
 ==================
 
-What is the Mandelbrot set?
+
+Ok, The Mandelbrot set is:
+
+> The set of all complex numbers that remain bounded when iterated on the equation f<sub>c</sub>(z) = z<sup>2</sup> + c
 
 
+Ok so real talk, there are like 3 or 4 things in that definition that I totally
+did not understand at all when I started this project. But I do now, and I'm
+going to explain them to you, one by one!
 
-http://iquilezles.org/www/articles/mset_smooth/mset_smooth.htm
+Let's start with the equation.
 
-<canvas id="mandelwat" height="200" width="200" style="border: 1px solid black;"></canvas>
+> f<sub>c</sub>(z) = z<sup>2</sup> + c
+
+This part's pretty easy. I have a function, and I feed it a number, and I get a number back.
+
+```js
+function thinger(z) {
+    return Math.pow(z, 2) + c;
+}
+```
+
+This is, of course, borked.
+
+```js
+thinger(2);
+```
+
+```
+ReferenceError: c is not defined
+    at thinger (/private/tmp/thinger.js:2:29)
+    at Object.<anonymous> (/private/tmp/thinger.js:5:13)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+    at Function.Module._load (module.js:438:3)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:394:7)
+    at startup (bootstrap_node.js:149:9)
+```
+
+`c` here must be defined. I will define it then!
+
+```js
+function thinger(z, c) {
+    return Math.pow(z, 2) + c;
+}
+```
+
+
+Cool cool. I can plug whatever in there now great.
+
+```js
+thinger(4, 2);
+thinger(40, 3);
+thinger(4000, 3.32);
+```
+```
+18
+1603
+16000003.32
+```
+
+Ok so now, what does 'iterated on' mean?
+
+It means that I take the output of the function and feed it back into the same
+function. The initial `z` input is always 0.
+
+```js
+function thinger(z, c) {
+    return thinger(Math.pow(z, 2) + c, c);
+}
+```
+
+Obviously, this is also borked.
+
+```
+RangeError: Maximum call stack size exceeded
+    at Object.pow (native)
+    ...
+```
+
+This is a recursive function with no base case. This is where the "bounded"
+part comes in. For a given input, this equation exhibits one of two behaviors
+under iteration. It can either stay _bounded_ Or it can _explode_ to infinity.
+This makes a little more sense if we see some output. I'll add a counter that
+I'll increment on each call just to give us a way to get out of the recursive
+loop.
+
+```js
+function thinger(z, c, i) {
+    if (i > 10) {
+        return;
+    }
+
+    var next = Math.pow(z, 2) + c;
+    console.log(next);
+    return thinger(next, c, i += 1);
+}
+```
+
+Now, we can see some interesting stuff.
+
+```js
+thinger(0, 2, 0);
+```
+
+```
+2
+6
+38
+1446
+2090918
+4371938082726
+1.9113842599189892e+25
+3.653389789066062e+50
+1.3347256950852164e+101
+1.781492681120714e+202
+Infinity
+```
+
+Exponents are no joke, and 2 decidedly does _not_ remain bounded.
+
+What about this one?
+
+```js
+thinger(0, -1, 0);
+```
+
+Hmm...
+
+```
+-1
+0
+-1
+0
+-1
+0
+-1
+0
+-1
+0
+-1
+```
+
+_But this one does!_ -1 is thus _in the Mandelbrot set_, and 2 _is not_.
+
+<hr>
+
+Wait, though, we were talking about _complex numbers_. And the numbers -1 and 2 are not coordinates, they are integers. How do you make a 2 dimensional graph with one number?
+
+These two questions answer each other!
+
+The mandelbrot set is not plotted on a [Cartesian
+plane](http://dl.uncw.edu/digilib/mathematics/algebra/mat111hb/functions/coordinates/coordinates.html),
+where each point is represented as a pair of numbers `<x, y>`. It's plotted on
+the _complex plane_. Where each point is represented by a single _complex number._
+
+A _complex number_ is an expression of the form `x + yi` where `x` and `y` are
+[real numbers](https://en.wikipedia.org/wiki/Real_number) and `i` is the [_unit
+imaginary number_](https://en.wikipedia.org/wiki/Imaginary_number). Though `y` alone
+is a real number, it is here the coefficient of `i`, and so cannot be combined
+with `x`. On the complex plane, we plot `x` (the "real" part of the complex
+number) on the x axis and `y` (the "imaginary" part of the complex number) on
+the y axis. This took me a while to understand but it's pretty simple really!
+
+So the cartesian coordinate `(1, 2)` would be represented on the complex plane as the
+complex number `1 + 2i`.
+
+So, remember, we wanted to feed _complex numbers_ into that function, but we
+can't because javascript doesn't have a _complex number_ type. There are, of
+course, [36 packages on npm for
+this](https://www.npmjs.com/search?q=complex%20number&page=2&ranking=optimal),
+but I'm not going to use any of them, because reasons!
+
+No but seriously. It's just one application and I can do it by hand. How!
+
+<hr>
+
+So, A complex number is made up of a real part and an imaginary part. Never the two shall meet. What if I wanted to add two complex numbers together?
+
+```
+(1 + 2i) + (3 + 5i) = 4 + 7i
+```
+
+Alright. But in JS, I could just keep track of these two parts _separately._
+
+```js
+realOne = 1;
+imaginaryOne = 2;
+realTwo = 3;
+imaginaryTwo = 5;
+
+console.log([realOne + realTwo, imaginaryOne + imaginaryTwo]
+```
+```
+[4, 7]
+```
+
+Or `4 + 7i`.
+
+I'm sort of returning this as a tuple. I could do this with objects too, if I wanted...
+
+```js
+first = {
+    real: 1,
+    imaginary: 2
+};
+second = {
+    real: 3,
+    imaginary: 5
+};
+
+console.log({
+    real: first.real + second.real,
+    imaginary: first.imaginary + second.imaginary
+});
+```
+```js
+{ real: 4, imaginary: 7 }
+```
+
+Do you see it? Do you see how this is just _dying_ to be made into a prototype that implements basic math over itself and stuff? Oh man, it really wants me to do that, but I'm not going to do it. Nope, not a chance.
+
+We also need to be able to _multiply_ complex numbers, in order to square them. What does that look like? It looks like algebra. Remember `FOIL`? "First, outer, inner, last."
+
+> (1 + 2i) * (3 + 5i)
+
+> (1 * 3) + (1 * 5i) + (2i * 3) + (2i * 5i)
+
+> 3 + 5i + 6i + 10i<sup>2</sup>
+
+> 3 + 11i + 10i<sup>2</sup>
+
+> 3 + 11i + 10(i * i)
+
+> 3 + 11i + 10(-1)
+
+> 3 + 11i - 10
+
+> -7 + 11i
+
+Remember that `i` is actually the square root of -1, so i<sup>2</sup> is... `-1`!
+
+So, that might seem a little counterintuitive but it's math so :shrug:.
+
+<hr>
+
+so... let's go back to our testing function from before! All I need to do is
+replace `z` and `c` with "complex numbers" made up of `zr` (z real), `zi` (z
+imaginary), `cr` (c real), and `ci` (c ice-cream). I'll keep that `i` around
+for now, as well.
+
+
+```js
+function thinger(zr, zi, cr, ci, i) {
+    if (i > 10) {
+        return;
+    }
+
+    var nextr = (zr * zr) - (zi * zi) + cr;
+    var nexti = ((zr * zi) *2) + ci
+
+    console.log([nextr, nexti]);
+
+    return thinger(nextr, nexti, cr, ci, i += 1);
+}
+```
+
+> I have to explain those nextr and nexti doodads.
+
+so here's the trick. Right now I'm sort of just, winging it with those
+iteration counts. But how do I _really_ know if a point is not in the set?
+
+> If the sum of the squares of the real and imaginary parts of the complex
+> number _ever exceed 4_, then that complex number is _not_ in the mandelbrot
+> set.
+
+That's a little more useful!
+
+```js
+function thinger(zr, zi, cr, ci, i) {
+    if (Math.pow(nextr, 2) + Math.pow(nexti, 2)) {
+        return false;
+    }
+
+    if (i > 20) {
+        return true;
+    }
+
+    var nextr = (zr * zr) - (zi * zi) + cr;
+    var nexti = ((zr * zi) *2) + ci
+
+    console.log([nextr, nexti]);
+
+    return thinger(nextr, nexti, cr, ci, i += 1);
+}
+```
+
+So what we have here... this getting there. If the condition stated above is met, then the number is not in the set. BUT if we've reached some maximum iteration count, then _as far as we know_, the number _is_ in the set. That's going to be important later on!
+
+It's cute to have this be recursive and all, but it's unnecessary. The formula
+looks cleaner as a loop and is less computationally expensive. We can let that
+state be internal and leave it out of the function signature. And as a matter
+of fact, we don't have to pass in the inital `zr` and `zi`, either. And what the hell, why don't I change that name from `thinger` to something a little more descriptive...
+
+```js
+function ismandlebrot(cr, ci) {
+    var zr = cr;
+    var zi = ci
+
+    for (var i = 0; i < 100; i++) {
+        if (zr**2 + zi**2 > 4) {
+            return false;
+        }
+
+        newzr = (zr * zr) - (zi * zi) + cr;
+        newzi = ((zr * zi) *2) + ci;
+        zr = newzr;
+        zi = newzi;
+    }
+    return true;
+}
+```
+
+Ok so, remember those predicate functions from before? They took in a `coord` with an `x` value and a `y` value? Doesn't that look... suspiciously similar to what we've got above?
+
+```js
+function ismandlebrot(coord) {
+    var cr = coord.x;
+    var ci = coord.y;
+    var zr = cr;
+    var zi = ci;
+
+    for (var i = 0; i < 100; i++) {
+        if (zr**2 + zi**2 > 4) {
+            return false;
+        }
+
+        newzr = (zr * zr) - (zi * zi) + cr;
+        newzi = ((zr * zi) *2) + ci;
+        zr = newzr;
+        zi = newzi;
+    }
+    return true;
+}
+```
+<canvas id="ex12" height="200" width="200" style="border: 1px solid black;"></canvas>
 <script>
 (function() {
     function ismandlebrot(coord) {
-        var cr = coord.x
-        var ci = coord.y
-        var zr = coord.x
-        var zi = coord.y
+        var cr = coord.x;
+        var ci = coord.y;
+        var zr = cr;
+        var zi = ci;
 
         for (var i = 0; i < 100; i++) {
             if (zr**2 + zi**2 > 4) {
@@ -967,21 +1303,24 @@ http://iquilezles.org/www/articles/mset_smooth/mset_smooth.htm
             }
 
             newzr = (zr * zr) - (zi * zi) + cr;
-            newzi = ((zr * zi) *2) + ci
-            zr = newzr
-            zi = newzi
+            newzi = ((zr * zi) *2) + ci;
+            zr = newzr;
+            zi = newzi;
         }
         return true;
     }
 
-    function wat(coord) {
-        return (coord.x ** 2).toPrecision(1) === coord.y.toPrecision(1)
-        // return coord.x == coord.y
-    }
-
-    var graph = new Graph("mandelwat");
+    var graph = new Graph("ex12");
     graph.render(ismandlebrot);
-    // graph.render(wat);
 })();
 </script>
 
+
+```js
+var graph = new Graph("ex12");
+graph.render(ismandlebrot);
+```
+
+There it is. Our old friend. The mandelbrot set.
+
+http://iquilezles.org/www/articles/mset_smooth/mset_smooth.htm
