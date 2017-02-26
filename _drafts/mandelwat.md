@@ -3,6 +3,10 @@ title:  The Mandelwat Set
 layout: post
 ---
 
+for future ref:
+
+http://iquilezles.org/www/articles/mset_smooth/mset_smooth.htm
+
 <style>
     button {
         margin-right: 0;
@@ -1323,4 +1327,413 @@ graph.render(ismandlebrot);
 
 There it is. Our old friend. The mandelbrot set.
 
-http://iquilezles.org/www/articles/mset_smooth/mset_smooth.htm
+
+
+Lol that looks like a fuzzy potato why is this cool at all
+=========================================================
+
+Yeah, it might look boring from where we're sitting, /but it's totally not/
+
+Remember when I built that "Graph" object, I made both `r` and `center`
+accessible. We can totally change where we're looking at the graph and
+re-render on the fly!
+
+<canvas id="ex13" height="200" width="200" style="border: 1px solid black;"></canvas>
+<button class="ex13button" data-centerx="-0.7463" data-centery="0.1102" data-r="0.005" >x:-0.7463, y:0.1102, r:0.005</button>
+<button class="ex13button" data-centerx="-0.7453" data-centery="0.1127" data-r="0.00065" >x:-0.7453, y:0.1127, r:0.00065</button>
+<button class="ex13button" data-centerx="-1.25066" data-centery="0.02012" data-r="0.0005" >x:-1.25066, y:0.02012, r:0.0005</button>
+<button class="ex13button" data-centerx="-0.16" data-centery="1.0405" data-r="0.076">x:-0.16, y:1.0405 r:0.046</button>
+
+<script>
+(function() {
+    function ismandlebrot(coord) {
+        var cr = coord.x;
+        var ci = coord.y;
+        var zr = cr;
+        var zi = ci;
+
+        for (var i = 0; i < 100; i++) {
+            if (zr**2 + zi**2 > 4) {
+                return false;
+            }
+
+            newzr = (zr * zr) - (zi * zi) + cr;
+            newzi = ((zr * zi) *2) + ci;
+            zr = newzr;
+            zi = newzi;
+        }
+        return true;
+    }
+    var canvasId = "ex13";
+    var graph = new Graph(canvasId);
+    graph.render(ismandlebrot);
+
+    var buttons =  document.getElementsByClassName(canvasId + "button");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function(e) {
+            graph.center = {
+                x: parseFloat(e.currentTarget.getAttribute('data-centerx')),
+                y: parseFloat(e.currentTarget.getAttribute('data-centery'))
+            };
+            graph.r = parseFloat(e.currentTarget.getAttribute('data-r'))
+            graph.render(ismandlebrot);
+        };
+    };
+
+})();
+</script>
+
+Small refactor
+=================
+
+So at this point I am going to drop the more general `Graph` abstraction and
+just hardcode that object's predicate as the mandelbrot test. That... pretty
+much looks like you would expect.
+
+```js
+function Mandelbrot(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var ctx = canvas.getContext("2d");
+    var imageData = ctx.createImageData(canvas.width, canvas.height);
+    var aspectRatio = canvas.height / canvas.width
+
+    this.iterations = 200;
+    this.r = 4
+    this.center = {
+        x: 0,
+        y: 0
+    };
+
+    var indexToCoord = function(index) {
+        index /= 4;
+        coord =  {
+            x: index % canvas.width,
+            y: Math.floor(index / canvas.width)
+        }
+        coord.x = (((coord.x * this.r / canvas.width) - this.r / 2) + (this.center.x * aspectRatio)) / aspectRatio;
+        coord.y = ((((coord.y * this.r / canvas.height) - this.r / 2) * -1) + this.center.y);
+        return coord;
+    }.bind(this)
+
+    var ismandlebrot = function(coord) {
+        var cr = coord.x
+        var ci = coord.y
+        var zr = coord.x
+        var zi = coord.y
+
+        var i;
+        for (i = 0; i < this.iterations; i++) {
+            if (zr**2 + zi**2 > 4) {
+                return false;
+            }
+
+            newzr = (zr * zr) - (zi * zi) + cr;
+            newzi = ((zr * zi) *2) + ci
+            zr = newzr
+            zi = newzi
+        }
+        return true;
+    }.bind(this);
+
+    this.render = function(predicate) {
+        for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
+            set = predicate(indexToCoord(i)) ? 255 : 0;
+            imageData.data[i]     = 0;
+            imageData.data[i + 1] = 0;
+            imageData.data[i + 2] = 0;
+            imageData.data[i + 3] = set;
+        }
+        ctx.putImageData(imageData, 0, 0);
+    }.bind(this)
+}
+```
+
+<script>
+function MandelbrotOne(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var ctx = canvas.getContext("2d");
+    var imageData = ctx.createImageData(canvas.width, canvas.height);
+    var aspectRatio = canvas.height / canvas.width
+
+    this.iterations = 200;
+    this.r = 4
+    this.center = {
+        x: 0,
+        y: 0
+    };
+
+    var indexToCoord = function(index) {
+        index /= 4;
+        coord =  {
+            x: index % canvas.width,
+            y: Math.floor(index / canvas.width)
+        }
+        coord.x = (((coord.x * this.r / canvas.width) - this.r / 2) + (this.center.x * aspectRatio)) / aspectRatio;
+        coord.y = ((((coord.y * this.r / canvas.height) - this.r / 2) * -1) + this.center.y);
+        return coord;
+    }.bind(this)
+
+    var ismandlebrot = function(coord) {
+        var cr = coord.x
+        var ci = coord.y
+        var zr = coord.x
+        var zi = coord.y
+
+        var i;
+        for (i = 0; i < this.iterations; i++) {
+            if (zr**2 + zi**2 > 4) {
+                return false;
+            }
+
+            newzr = (zr * zr) - (zi * zi) + cr;
+            newzi = ((zr * zi) *2) + ci
+            zr = newzr
+            zi = newzi
+        }
+        return true;
+    }.bind(this);
+
+    this.render = function() {
+        for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
+            set = ismandlebrot(indexToCoord(i)) ? 255 : 0;
+            imageData.data[i]     = 0;
+            imageData.data[i + 1] = 0;
+            imageData.data[i + 2] = 0;
+            imageData.data[i + 3] = set;
+        }
+        ctx.putImageData(imageData, 0, 0);
+    }.bind(this)
+}
+</script>
+
+<canvas id="ex14" height="200" width="200" style="border: 1px solid black;"></canvas>
+<script>
+    var mb = new MandelbrotOne("ex14")
+    mb.render();
+</script>
+
+Now, I can do something like this:
+
+```js
+var mb = new Mandelbrot("ex14")
+mb.render();
+```
+
+There's one important change here! In the `Mandelbrot` object above, you can
+see that I've exposed another attribute. `this.iterations`, and used it as a
+maximum value in the for loop in the mandelbrot function.
+
+Why are iterations important? Well, the more iterations we use the more fine
+grained the mandlebrot can be displayed. Look at this!
+
+```js
+var mb = new MandelbrotOne("ex15")
+var iterations = 1;
+var x = 1;
+setInterval(function(){
+    mb.iterations = iterations += x
+    if (iterations == 20) {
+        x = -1;
+    } else if (iterations == 0) {
+        x = 1;
+    }
+    mb.render();
+}, 1000)
+```
+
+<canvas id="ex15" height="200" width="200" style="border: 1px solid black;"></canvas>
+<script>
+(function() {
+    var mb = new MandelbrotOne("ex15")
+    var iterations = 1;
+    var x = 1;
+    setInterval(function(){
+        mb.iterations = iterations += x
+        if (iterations == 20) {
+            x = -1;
+        } else if (iterations == 0) {
+            x = 1;
+        }
+        mb.render();
+    }, 200)
+})()
+</script>
+
+
+
+
+Colors come out of the speakers!
+==============================
+
+Let's talk about those trippy ass colors we see on all the zooms on youtube!
+
+Right now we've got a pretty simple true false test that tells us if a pixel is
+not in the set or if _as far as we know_ it is. Every extra iteration increases
+the fidelity of that second category, as you can see in the doodad above. The
+thing is, we're throwing away some information here We're throwing away _how
+many iterations it took us_ to figure out that a point was not in the set. This
+is really interesting information!
+
+Currently, the render function uses the boolean value returned by
+`ismandlebrot` to decide whether or not to set the `opacity` 'byte' to either
+255, or 0.
+
+```js
+    this.render = function() {
+        for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
+            set = ismandlebrot(indexToCoord(i)) ? 255 : 0;
+            imageData.data[i]     = 0;
+            imageData.data[i + 1] = 0;
+            imageData.data[i + 2] = 0;
+            imageData.data[i + 3] = set;
+        }
+        ctx.putImageData(imageData, 0, 0);
+    }.bind(this)
+```
+
+We can change `ismandlebrot` to return a tuple instead, of two things: the
+original boolean value _and the iterations required to devine it_.
+
+```js
+var ismandlebrot = function(coord) {
+    var cr = coord.x
+    var ci = coord.y
+    var zr = coord.x
+    var zi = coord.y
+
+    var i;
+    for (i = 0; i < this.iterations; i++) {
+        if (zr**2 + zi**2 > 4) {
+            return [false, i];
+        }
+
+        newzr = (zr * zr) - (zi * zi) + cr;
+        newzi = ((zr * zi) *2) + ci
+        zr = newzr
+        zi = newzi
+    }
+    return [true, i];
+}.bind(this);
+```
+
+Now, back in the render function, we can use that information to color the
+pixel according to it's iteration score!
+
+```js
+this.render = function() {
+    for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
+        thing = ismandlebrot(indexToCoord(i))
+        set =  thing[0] ?  0: (thing[1] / this.iterations) * 0xffffff;
+        imageData.data[i]     = (set & 0xff0000) >> 16;
+        imageData.data[i + 1] = (set & 0x00ff00) >> 8;
+        imageData.data[i + 2] = set & 0x0000ff;
+        imageData.data[i + 3] = 255;
+    }
+    ctx.putImageData(imageData, 0, 0);
+}.bind(this)
+```
+
+> todo: explain the bit fiddling that turns an iteration score into a color
+
+This is _drastically_ cooler looking.
+
+<script>
+    function Mandelbrot(canvasId) {
+        var canvas = document.getElementById(canvasId);
+        var ctx = canvas.getContext("2d");
+        var imageData = ctx.createImageData(canvas.width, canvas.height);
+        var aspectRatio = canvas.height / canvas.width
+
+        this.iterations = 200;
+        this.r = 4
+        this.center = {
+            x: 0,
+            y: 0
+        };
+
+        var indexToCoord = function(index) {
+            index /= 4;
+            coord =  {
+                x: index % canvas.width,
+                y: Math.floor(index / canvas.width)
+            }
+            coord.x = (((coord.x * this.r / canvas.width) - this.r / 2) + (this.center.x * aspectRatio)) / aspectRatio;
+            coord.y = ((((coord.y * this.r / canvas.height) - this.r / 2) * -1) + this.center.y);
+            return coord;
+        }.bind(this)
+
+        var ismandlebrot = function(coord) {
+            var cr = coord.x
+            var ci = coord.y
+            var zr = coord.x
+            var zi = coord.y
+
+            var i;
+            for (i = 0; i < this.iterations; i++) {
+                if (zr**2 + zi**2 > 4) {
+                    return [false, i];
+                }
+
+                newzr = (zr * zr) - (zi * zi) + cr;
+                newzi = ((zr * zi) *2) + ci
+                zr = newzr
+                zi = newzi
+            }
+            return [true, i];
+        }.bind(this);
+
+        this.render = function() {
+            for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
+                thing = ismandlebrot(indexToCoord(i))
+                set =  thing[0] ? 0 : (thing[1] / this.iterations) * 0xffffff;
+                imageData.data[i]     = (set & 0xff0000) >> 16;
+                imageData.data[i + 1] = (set & 0x00ff00) >> 8;
+                imageData.data[i + 2] = set & 0x0000ff;
+                imageData.data[i + 3] = 255;
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }.bind(this)
+    }
+</script>
+
+<canvas id="ex16" height="200" width="200" style="border: 1px solid black;"></canvas>
+<script>
+(function() {
+    var mb = new Mandelbrot("ex16")
+    mb.render();
+})()
+</script>
+
+```js
+var mb = new Mandelbrot("ex16")
+mb.render();
+```
+
+Remember those little thingers from before? Look what they look like in _color_!!
+
+<canvas id="ex17" height="200" width="200" style="border: 1px solid black;"></canvas>
+<button class="ex17button" data-centerx="-0.7463" data-centery="0.1102" data-r="0.005" >x:-0.7463, y:0.1102, r:0.005</button>
+<button class="ex17button" data-centerx="-0.7453" data-centery="0.1127" data-r="0.00065" >x:-0.7453, y:0.1127, r:0.00065</button>
+<button class="ex17button" data-centerx="-1.25066" data-centery="0.02012" data-r="0.0005" >x:-1.25066, y:0.02012, r:0.0005</button>
+<button class="ex17button" data-centerx="-0.16" data-centery="1.0405" data-r="0.076">x:-0.16, y:1.0405 r:0.046</button>
+
+<script>
+(function() {
+    var canvasId = "ex17";
+    var graph = new Mandelbrot(canvasId);
+    graph.iterations = 1500;
+    graph.render();
+    var buttons =  document.getElementsByClassName(canvasId + "button");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function(e) {
+            console.log("dfjio");
+            graph.center = {
+                x: parseFloat(e.currentTarget.getAttribute('data-centerx')),
+                y: parseFloat(e.currentTarget.getAttribute('data-centery'))
+            };
+            graph.r = parseFloat(e.currentTarget.getAttribute('data-r'))
+            graph.render();
+        };
+    };
+})();
+</script>
