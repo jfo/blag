@@ -3,37 +3,42 @@ title:  The Mandelwat Set
 layout: post
 ---
 
-for future ref:
-
-http://iquilezles.org/www/articles/mset_smooth/mset_smooth.htm
-
-<style>
-    button {
-        margin-right: 0;
-        margin-left: 0;
-    }
-</style>
-
 <script>
     var randColor = function() {
         return '#'+Math.floor(Math.random()*16777215).toString(16).toUpperCase();
     }
 </script>
 
+![img](http://i.imgur.com/mQNucqK.png)
+
+If you've never seen the Mandelbrot set, do me and also yourself a favor and
+[watch some amount of time of one or two of these
+videos](https://www.youtube.com/results?search_query=mandelbrot+zoom) real
+quick.
+
+I know, right? _What is that thing._
+
+<hr>
 
 I wanted to learn about the Mandelbrot set. I thought, that's a neat thing!
 I wonder how I could make one. Turns out it's not that hard, really, but you
 have to understand the math and also what it _is_, and those things are pretty
 hard, at least for me, because I am not great at math even though I love it
-and also the mandlebrot set is a fractal and fractals are _bonkers_.
+and also the Mandlebrot set is a fractal and fractals are _bonkers_.
 
 I thought, "Hey, I'm a Web Developer<sup>TM</sup> I should use JavaScript for
 this because JavaScript is the best lol!" And so here we are.
 
+I'm going to jump right in and try to explain it practically, but if you feel a
+little lost or want something reinforced, jump down to the
+[references](#references) at the bottom for some good resources and videos to
+watch!
+
+![img](http://i.imgur.com/x278gIJ.png)
 
 <hr>
 
-So before I can draw a mandlebrot set, I have to have something to draw on! In
+So before I can draw a Mandlebrot set, I have to have something to draw on! In
 html5 land, that thing is a `<canvas>`
 
 That looks like this:
@@ -75,6 +80,7 @@ Now we just need to slap an `id` in there and we can grab it from the JavaScript
 That's it from the HTML side. All the rest of the canvases will look the same
 except with incrementing ids!
 
+![img](http://i.imgur.com/zPKyB2n.png)
 <hr>
 
 You can do many wonderful things on a canvas! First you need to grab a
@@ -97,11 +103,13 @@ context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext
 to affect the canvas itself. In the following example, notice that we access
 the canvas's `width` and `height` attributes to know how big a rectangle to
 draw! This is a common pattern, and it will be important later on. Right now
-I'm just drawing a rectangle to fill the whole canvas though. [Also I have a random color function](https://www.paulirish.com/2009/random-hex-color-code-snippets/)
+I'm just drawing a rectangle to fill the whole canvas though. [Also I'm using a
+random color
+function](https://www.paulirish.com/2009/random-hex-color-code-snippets/) I found for [another post](/how-react-do).
+To run this example, press this button labeled "Run", right here: <span><button id="ex1button1">Run</button></span>.
 
 <canvas id="ex1" style="border: 1px solid black;" width="200px" height="200px"></canvas>
 
-<button id="ex1button1">Run</button>
 
 ```js
 context.beginPath();
@@ -125,11 +133,10 @@ context.fill();
     })()
 </script>
 
-You can also do other things! Like drawing lines:
+You can also do other things! Like drawing lines: <span><button id="ex2button">Randinavian</button></span>
 
 <canvas id="ex2" style="border: 1px solid black;" width="200px" height="200px"></canvas>
 
-<button id="ex2button">Randinavian</button>
 
 ```js
 context.lineWidth = 35;
@@ -178,8 +185,6 @@ context.stroke();
         document.getElementById(canvasId + "button").onclick = render;
     })()
 </script>
-
-<hr>
 
 So, let's look a little closer at those lines.
 
@@ -246,8 +251,12 @@ really designed to do that for me. Just keep that in mind!
 
 <hr>
 
-I am interested in a slightly lower lever api than these drawn lines and
-strokes, though. How can I achieve granular control over each pixel? We can
+It seems like this is really how you're supposed to interact with the canvas...
+it's definitely hinted at by the name, you draw strokes and shapes on it to
+achieve a final result.
+
+I am interested in a lower lever api than these drawn lines and
+shapes, though. How can I achieve granular control over each pixel? We can
 interact directly with the pixels in a canvas by using a representation called
 [`ImageData`](https://developer.mozilla.org/en-US/docs/Web/API/ImageData).
 
@@ -300,12 +309,9 @@ But this is lower level than that. It is literally just a one dimensional
 array! Let's play with it though. This example simply fills all the channels
 for all the pixels with a random value.  You'll notice that it looks a little
 pastel, since on average there will be some transparency applied to each
-pixel.
-
+pixel. <span><button id="ex5button">RGB Noise</button></span>
 
 <canvas id="ex5" style="border: 1px solid black;" width="200px" height="200px"></canvas>
-
-<button id="ex5button">RGB Noise</button>
 
 ```js
 var imageData = context.createImageData(canvas.width, canvas.height);
@@ -337,11 +343,13 @@ context.putImageData(imageData, 0, 0); //  0, 0 is the offset to start putting t
 Of course, to be useful we need to look at each pixel's 4 values as a chunk and
 change them accordingly. Here's a simple little for loop that will do that!
 This example simply turns every pixel blue with no transparency.
+<span>
+    <button id="ex6button">blue</button>
+    <button id="ex6clear">clear</button>
+</span>
 
 <canvas id="ex6" style="border: 1px solid black;" width="200px" height="200px"></canvas>
 
-<button id="ex6button">blue</button>
-<button id="ex6clear">clear</button>
 
 ```js
 var imageData = context.createImageData(canvas.width, canvas.height);
@@ -376,16 +384,15 @@ context.putImageData(imageData, 0, 0);
     })()
 </script>
 
-> Here's a small exercise! Can you make a widget that uses the
+> Here's a small exercise I just thought of. How would one make a widget that uses the
 > ImageData technique above to create a randomly colored background? How about
 > one that allows user input for the RGBA values? A canvas that maps mouse
 > position to the color of the canvas and changes it as you move it around?
-> These are just some ideas. You don't have to use ImageData exclusively,
-> of course, there are easier ways to simply change the background color. Just
-> an idea!
+> These are just some ideas. You wouldn't have to use ImageData exclusively,
+> of course, there are easier ways to simply change the background color.
 
+![img](http://i.imgur.com/o78XTjo.png)
 <hr>
-
 
 It is a minor inconvenience to have to address the pixel values linearly like
 this, what I'd really like to be able to do is address coordinates inside the
@@ -440,9 +447,9 @@ I get something a little more palatable!
 { x: 3, y: 3 }
 ```
 
-This tells me a lot more about that pixel's location!
+This tells me a lot more about that pixel's location.
 
-We're almost there! I want to be able to use coordinates on a coordinate plane,
+We're almost there. I want to be able to use coordinates on a coordinate plane,
 this is still 0 indexed from the top and left. Also, I want to decouple the
 coordinate from the pixels themselves and simply be able to scale it to
 whatever range I want. That scaling value is going to be an "r" value.
@@ -509,9 +516,9 @@ outside, and I've added an aspect ratio to scale the coordinates correctly in
 case the canvas is not 1:1.
 
 
-> If I were writing a real graphing library, I would want that to be settable
-> as well, but this is a stepping stone to the mandelbrot rendering, which will
-> always be 1:1.
+> If I were writing a real graphing library or something, I would want that to
+> be settable as well, but this is a stepping stone to the Mandelbrot
+> rendering, which will always be 1:1.
 
 ```js
 function Graph(canvasId) {
@@ -549,7 +556,7 @@ function Graph(canvasId) {
 
 I've also added the rgb noise example as the render function for this object.
 
-Now we can interact with a canvas something like this:
+Now we can interact with a canvas something like this: <span><button id="ex7button">Run</button></span>
 
 ```
 var graph = new Graph("canvas-id")
@@ -558,7 +565,6 @@ graph.render()
 
 <canvas id="ex7" style="border: 1px solid black;" width="200px" height="200px"></canvas>
 
-<button id="ex7button">Run</button>
 
 <script>
     (function() {
@@ -604,6 +610,7 @@ Each pixel, now, can be viewed as a single discrete coordinate on a plane that
 can be centered anywhere in the two dimensional plane and scaled up or down
 depending on what you want to see!
 
+![img](http://i.imgur.com/zKEcIQJ.png)
 <hr>
 
 Before packing away this abstraction and explaining sets, I want to add one
@@ -626,6 +633,10 @@ method to accept a predicate function, instead:
 
 Now, for every pixel on a given Graph, the predicate is called on it's
 coordinate and returns whether or not it should be filled in with black or not.
+The first three values per pixel are RGB values, and the last one is the
+`alpha` channel, which sets the transparency of the pixel. The higher it is,
+the more opaque, so by setting it to its maximum value of `255`, we make the
+pixel black.
 
 From now on we're going to interact with a Graph object for each canvas in the
 next section, like this!
@@ -644,7 +655,7 @@ graph.render(function(coord) {
 })
 ```
 
-Ok let's play with that!
+Ok let's play with it!
 
 
 <script>
@@ -751,12 +762,15 @@ If I were building a fully functional graphing library, I would have to deal
 with this issue (and many more!). But I'm not, so I won't! This is adequate for
 now. Let's talk about sets!
 
+![img](http://i.imgur.com/4P4tuRu.png)
+<hr>
+
 Sets wtf is a set
 =================
 
-> I'm not going to get into set theory because I don't know anything about it,
-> but maybe it's worth a mention? Wonder what would be a really good succinct
-> but not stupid explanation of set theory...
+> I'm not going to get into set theory because I don't know really anything
+> about it, but maybe it's worth a mention? Wonder what would be a really good
+> succinct but not wrong explanation of set theory...
 
 Let's say a [set](https://en.wikipedia.org/wiki/Set_(mathematics)) is pretty
 much what you think it is, then. How can we describe a set? We can have a set
@@ -938,12 +952,14 @@ graph.render(function(coord) {
 });
 ```
 
-This is cool, then, I have a way of graphing sets! These sets are pretty boring though. But you know what's not boring??
+This is cool, then, I have a way of "graphing" sets! These sets are pretty
+boring though. But you know what's not boring??
 
+![img](http://i.imgur.com/iGGHbnF.png)
+<hr>
 
 The Mandelbrot Set
 ==================
-
 
 Ok, The Mandelbrot set is:
 
@@ -1092,16 +1108,21 @@ Hmm...
 
 _But this one does!_ -1 is thus _in the Mandelbrot set_, and 2 _is not_.
 
+![img](http://i.imgur.com/JgtS1hj.png)
+
 <hr>
 
-Wait, though, we were talking about _complex numbers_. And the numbers -1 and 2 are not coordinates, they are integers. How do you make a 2 dimensional graph with one number?
+Wait, though, we were talking about _complex numbers_. And the numbers -1 and 2
+are not coordinates, they are integers. How do you make a 2 dimensional graph
+with one number?
 
 These two questions answer each other!
 
-The mandelbrot set is not plotted on a [Cartesian
+The Mandelbrot set is not plotted on a [Cartesian
 plane](http://dl.uncw.edu/digilib/mathematics/algebra/mat111hb/functions/coordinates/coordinates.html),
 where each point is represented as a pair of numbers `<x, y>`. It's plotted on
-the _complex plane_. Where each point is represented by a single _complex number._
+the [_complex plane_](https://en.wikipedia.org/wiki/Complex_plane). Where each
+point is represented by a single _complex number._
 
 A _complex number_ is an expression of the form `x + yi` where `x` and `y` are
 [real numbers](https://en.wikipedia.org/wiki/Real_number) and `i` is the [_unit
@@ -1110,21 +1131,28 @@ is a real number, it is here the coefficient of `i`, and so cannot be combined
 with `x`. On the complex plane, we plot `x` (the "real" part of the complex
 number) on the x axis and `y` (the "imaginary" part of the complex number) on
 the y axis. This took me a while to understand but it's pretty simple really!
+[Here's a Khan Academy
+video](https://www.khanacademy.org/math/algebra2/introduction-to-complex-numbers-algebra-2/the-complex-numbers-algebra-2/v/complex-number-intro)
+that explains it in more detail.
 
 So the cartesian coordinate `(1, 2)` would be represented on the complex plane as the
 complex number `1 + 2i`.
 
 So, remember, we wanted to feed _complex numbers_ into that function, but we
 can't because javascript doesn't have a _complex number_ type. There are, of
-course, [36 packages on npm for
+course, [36 packages on npm that probably can do
 this](https://www.npmjs.com/search?q=complex%20number&page=2&ranking=optimal),
 but I'm not going to use any of them, because reasons!
 
-No but seriously. It's just one application and I can do it by hand. How!
+No but seriously. It's just one application and I can do it by hand and that's
+how we learn new things.
+
+![img](http://i.imgur.com/jnQVsTo.png)
 
 <hr>
 
-So, A complex number is made up of a real part and an imaginary part. Never the two shall meet. What if I wanted to add two complex numbers together?
+So, A complex number is made up of a real part and an imaginary part. Never the
+two shall meet. What if I wanted to add two complex numbers together?
 
 ```
 (1 + 2i) + (3 + 5i) = 4 + 7i
@@ -1146,7 +1174,7 @@ console.log([realOne + realTwo, imaginaryOne + imaginaryTwo]
 
 Or `4 + 7i`.
 
-I'm sort of returning this as a tuple. I could do this with objects too, if I wanted...
+I'm returning this as a tuple of two values. I could use objects, if I wanted...
 
 ```js
 first = {
@@ -1167,9 +1195,13 @@ console.log({
 { real: 4, imaginary: 7 }
 ```
 
-Do you see it? Do you see how this is just _dying_ to be made into a prototype that implements basic math over itself and stuff? Oh man, it really wants me to do that, but I'm not going to do it. Nope, not a chance.
+Do you see it? Do you see how this is just _dying_ to be made into a prototype
+that implements basic math over itself and stuff? Oh man, it really wants me to
+do that, but I'm not going to do it.
 
-We also need to be able to _multiply_ complex numbers, in order to square them. What does that look like? It looks like algebra. Remember `FOIL`? "First, outer, inner, last."
+We also need to be able to _multiply_ complex numbers, in order to square them.
+What does that look like? It looks like algebra. Remember `FOIL`? "First,
+outer, inner, last."
 
 > (1 + 2i) * (3 + 5i)
 
@@ -1187,21 +1219,20 @@ We also need to be able to _multiply_ complex numbers, in order to square them. 
 
 > -7 + 11i
 
-Remember that `i` is actually the square root of -1, so i<sup>2</sup> is... `-1`!
-
-So, that might seem a little counterintuitive but it's math so :shrug:.
+Remember that `i` is actually the square root of -1, so i<sup>2</sup> is...
+`-1`!
 
 <hr>
 
-so... let's go back to our testing function from before! All I need to do is
+So... let's go back to our testing function from before! All I need to do is
 replace `z` and `c` with "complex numbers" made up of `zr` (z real), `zi` (z
-imaginary), `cr` (c real), and `ci` (c ice-cream). I'll keep that `i` around
-for now, as well.
+imaginary), `cr` (c real), and `ci` (c imaginary). I'll keep that index var `i` around
+for now, as well, but I'm going to change it to `iterations` for a little more clarity.
 
 
 ```js
-function thinger(zr, zi, cr, ci, i) {
-    if (i > 10) {
+function thinger(zr, zi, cr, ci, iterations) {
+    if (iterations > 10) {
         return;
     }
 
@@ -1210,49 +1241,54 @@ function thinger(zr, zi, cr, ci, i) {
 
     console.log([nextr, nexti]);
 
-    return thinger(nextr, nexti, cr, ci, i += 1);
+    return thinger(nextr, nexti, cr, ci, iterations += 1);
 }
 ```
 
-> I have to explain those nextr and nexti doodads.
+Those `nextr` and `nexti` expressions are just what you get when you factor out
+the real and imaginary operations from the `FOIL` procedure from above.
 
-so here's the trick. Right now I'm sort of just, winging it with those
+So here's the trick. Right now I'm sort of just, winging it with those
 iteration counts. But how do I _really_ know if a point is not in the set?
 
 > If the sum of the squares of the real and imaginary parts of the complex
-> number _ever exceed 4_, then that complex number is _not_ in the mandelbrot
+> number _ever exceed 4_, then that complex number is _not_ in the Mandelbrot
 > set.
 
 That's a little more useful!
 
 ```js
-function thinger(zr, zi, cr, ci, i) {
-    if (Math.pow(nextr, 2) + Math.pow(nexti, 2)) {
-        return false;
-    }
-
-    if (i > 20) {
+function thinger(zr, zi, cr, ci, iterations) {
+    if (iterations > 20) {
         return true;
     }
 
     var nextr = (zr * zr) - (zi * zi) + cr;
     var nexti = ((zr * zi) *2) + ci
-
     console.log([nextr, nexti]);
 
-    return thinger(nextr, nexti, cr, ci, i += 1);
+    if (Math.pow(nextr, 2) + Math.pow(nexti, 2) > 4) {
+        return false;
+    }
+
+    return thinger(nextr, nexti, cr, ci, iterations += 1);
 }
 ```
 
-So what we have here... this getting there. If the condition stated above is met, then the number is not in the set. BUT if we've reached some maximum iteration count, then _as far as we know_, the number _is_ in the set. That's going to be important later on!
+So what we have here... this is getting there. If the condition stated above is
+met, then the number is not in the set. BUT if we've reached some maximum
+iteration count, then _as far as we know_, the number _is_ in the set. That's
+going to be important later on!
 
 It's cute to have this be recursive and all, but it's unnecessary. The formula
 looks cleaner as a loop and is less computationally expensive. We can let that
 state be internal and leave it out of the function signature. And as a matter
-of fact, we don't have to pass in the inital `zr` and `zi`, either. And what the hell, why don't I change that name from `thinger` to something a little more descriptive...
+of fact, dropping the recursion means we don't have to pass in the inital `zr`
+and `zi`, either. And what the hell, why don't I change that name from
+`thinger` to something a little more descriptive...
 
 ```js
-function ismandlebrot(cr, ci) {
+function isMandlebrot(cr, ci) {
     var zr = cr;
     var zi = ci
 
@@ -1269,11 +1305,12 @@ function ismandlebrot(cr, ci) {
     return true;
 }
 ```
-
-Ok so, remember those predicate functions from before? They took in a `coord` with an `x` value and a `y` value? Doesn't that look... suspiciously similar to what we've got above?
+Ok so, remember those predicate functions from before? They took in a `coord`
+with an `x` value and a `y` value? Doesn't that look... suspiciously similar to
+what we've got above?
 
 ```js
-function ismandlebrot(coord) {
+function isMandlebrot(coord) {
     var cr = coord.x;
     var ci = coord.y;
     var zr = cr;
@@ -1295,7 +1332,7 @@ function ismandlebrot(coord) {
 <canvas id="ex12" height="200" width="200" style="border: 1px solid black;"></canvas>
 <script>
 (function() {
-    function ismandlebrot(coord) {
+    function isMandlebrot(coord) {
         var cr = coord.x;
         var ci = coord.y;
         var zr = cr;
@@ -1315,28 +1352,27 @@ function ismandlebrot(coord) {
     }
 
     var graph = new Graph("ex12");
-    graph.render(ismandlebrot);
+    graph.render(isMandlebrot);
 })();
 </script>
 
 
 ```js
 var graph = new Graph("ex12");
-graph.render(ismandlebrot);
+graph.render(isMandlebrot);
 ```
 
-There it is. Our old friend. The mandelbrot set.
+There it is. Our old friend. The Mandelbrot set.
 
 
+Lol that looks like a fuzzy potato why is this cool
+===================================================
 
-Lol that looks like a fuzzy potato why is this cool at all
-=========================================================
+Yeah, it might look boring from where we're sitting, _but it's totally not_
 
-Yeah, it might look boring from where we're sitting, /but it's totally not/
-
-Remember when I built that "Graph" object, I made both `r` and `center`
-accessible. We can totally change where we're looking at the graph and
-re-render on the fly!
+Remember when I built that "Graph" object, I made both `r` (the zoom factor)
+and `center` accessible. We can totally change where we're looking at the graph
+and re-render on the fly!
 
 <canvas id="ex13" height="200" width="200" style="border: 1px solid black;"></canvas>
 <button class="ex13button" data-centerx="-0.7463" data-centery="0.1102" data-r="0.005" >x:-0.7463, y:0.1102, r:0.005</button>
@@ -1346,7 +1382,7 @@ re-render on the fly!
 
 <script>
 (function() {
-    function ismandlebrot(coord) {
+    function isMandlebrot(coord) {
         var cr = coord.x;
         var ci = coord.y;
         var zr = cr;
@@ -1366,7 +1402,7 @@ re-render on the fly!
     }
     var canvasId = "ex13";
     var graph = new Graph(canvasId);
-    graph.render(ismandlebrot);
+    graph.render(isMandlebrot);
 
     var buttons =  document.getElementsByClassName(canvasId + "button");
     for (var i = 0; i < buttons.length; i++) {
@@ -1376,7 +1412,7 @@ re-render on the fly!
                 y: parseFloat(e.currentTarget.getAttribute('data-centery'))
             };
             graph.r = parseFloat(e.currentTarget.getAttribute('data-r'))
-            graph.render(ismandlebrot);
+            graph.render(isMandlebrot);
         };
     };
 
@@ -1387,7 +1423,7 @@ Small refactor
 =================
 
 So at this point I am going to drop the more general `Graph` abstraction and
-just hardcode that object's predicate as the mandelbrot test. That... pretty
+just hardcode that object's predicate as the Mandelbrot test. That... pretty
 much looks like you would expect.
 
 ```js
@@ -1415,7 +1451,7 @@ function Mandelbrot(canvasId) {
         return coord;
     }.bind(this)
 
-    var ismandlebrot = function(coord) {
+    var isMandlebrot = function(coord) {
         var cr = coord.x
         var ci = coord.y
         var zr = coord.x
@@ -1473,7 +1509,7 @@ function MandelbrotOne(canvasId) {
         return coord;
     }.bind(this)
 
-    var ismandlebrot = function(coord) {
+    var isMandlebrot = function(coord) {
         var cr = coord.x
         var ci = coord.y
         var zr = coord.x
@@ -1495,7 +1531,7 @@ function MandelbrotOne(canvasId) {
 
     this.render = function() {
         for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
-            set = ismandlebrot(indexToCoord(i)) ? 255 : 0;
+            set = isMandlebrot(indexToCoord(i)) ? 255 : 0;
             imageData.data[i]     = 0;
             imageData.data[i + 1] = 0;
             imageData.data[i + 2] = 0;
@@ -1521,10 +1557,10 @@ mb.render();
 
 There's one important change here! In the `Mandelbrot` object above, you can
 see that I've exposed another attribute. `this.iterations`, and used it as a
-maximum value in the for loop in the mandelbrot function.
+maximum value in the for loop in the Mandelbrot function.
 
 Why are iterations important? Well, the more iterations we use the more fine
-grained the mandlebrot can be displayed. Look at this!
+grained the Mandlebrot can be displayed. Look at this!
 
 ```js
 var mb = new MandelbrotOne("ex15")
@@ -1559,29 +1595,33 @@ setInterval(function(){
 })()
 </script>
 
+As the iterations cycle back and forth, you can see that the edges of the set
+get more definition. That could go on infinitely, though what you see above is
+about as high fidelity as we can get at that zoom level, since pixels have a
+definite size, small as they may seem.
 
+![img](http://i.imgur.com/juMLg6F.png)
 
-
-Colors come out of the speakers!
+Colors come out of the speakers
 ==============================
 
-Let's talk about those trippy ass colors we see on all the zooms on youtube!
+Let's talk about those trippy ass colors you see on all the zooms on youtube.
 
 Right now we've got a pretty simple true false test that tells us if a pixel is
-not in the set or if _as far as we know_ it is. Every extra iteration increases
+not in the set or if, _as far as we know_, it is. Every extra iteration increases
 the fidelity of that second category, as you can see in the doodad above. The
 thing is, we're throwing away some information here We're throwing away _how
 many iterations it took us_ to figure out that a point was not in the set. This
 is really interesting information!
 
 Currently, the render function uses the boolean value returned by
-`ismandlebrot` to decide whether or not to set the `opacity` 'byte' to either
+`isMandlebrot` to decide whether or not to set the `opacity` 'byte' to either
 255, or 0.
 
 ```js
     this.render = function() {
         for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
-            set = ismandlebrot(indexToCoord(i)) ? 255 : 0;
+            set = isMandlebrot(indexToCoord(i)) ? 255 : 0;
             imageData.data[i]     = 0;
             imageData.data[i + 1] = 0;
             imageData.data[i + 2] = 0;
@@ -1591,11 +1631,11 @@ Currently, the render function uses the boolean value returned by
     }.bind(this)
 ```
 
-We can change `ismandlebrot` to return a tuple instead, of two things: the
-original boolean value _and the iterations required to devine it_.
+We can change `isMandlebrot` to return a tuple instead, of two things: the
+original boolean value _and the iterations required to divine it_.
 
 ```js
-var ismandlebrot = function(coord) {
+var isMandlebrot = function(coord) {
     var cr = coord.x
     var ci = coord.y
     var zr = coord.x
@@ -1622,7 +1662,7 @@ pixel according to it's iteration score!
 ```js
 this.render = function() {
     for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
-        thing = ismandlebrot(indexToCoord(i))
+        thing = isMandlebrot(indexToCoord(i))
         set =  thing[0] ?  0: (thing[1] / this.iterations) * 0xffffff;
         imageData.data[i]     = (set & 0xff0000) >> 16;
         imageData.data[i + 1] = (set & 0x00ff00) >> 8;
@@ -1633,7 +1673,11 @@ this.render = function() {
 }.bind(this)
 ```
 
-> todo: explain the bit fiddling that turns an iteration score into a color
+> `set` here is a value that I'm first normalizing between 0 and 1, then
+> scaling to be between 0 and 16777215. Then I'm extracting RGB values in kind
+> from it with some bit twiddling. Sorry I'm not explaining that more/better,
+> I'm turning the iteration count into a color value is all!
+
 
 This is _drastically_ cooler looking.
 
@@ -1662,7 +1706,7 @@ This is _drastically_ cooler looking.
             return coord;
         }.bind(this)
 
-        var ismandlebrot = function(coord) {
+        var isMandlebrot = function(coord) {
             var cr = coord.x
             var ci = coord.y
             var zr = coord.x
@@ -1684,7 +1728,7 @@ This is _drastically_ cooler looking.
 
         this.render = function() {
             for (var i = 0; i < canvas.width * canvas.height * 4; i += 4) {
-                thing = ismandlebrot(indexToCoord(i))
+                thing = isMandlebrot(indexToCoord(i))
                 set =  thing[0] ? 0 : (thing[1] / this.iterations) * 0xffffff;
                 imageData.data[i]     = (set & 0xff0000) >> 16;
                 imageData.data[i + 1] = (set & 0x00ff00) >> 8;
@@ -1737,3 +1781,92 @@ Remember those little thingers from before? Look what they look like in _color_!
     };
 })();
 </script>
+
+<hr>
+
+Alright! This totally works and is beautiful! But, it's _slow._ On the one hand
+_of course it is_, this is a lot of computation. But on the other hand... we can do better.
+
+Way, way better.
+
+So, I've made a little doodad that computes Mandelbrots on the gpu using WebGL.
+It lives here:
+
+[http://mandelbrot.jfo.click](http://mandelbrot.jfo.click)
+
+All of the illustrations above that aren't example canvases were made with
+this tool. I've really enjoyed playing with it! You can even resize the canvas
+to download high resolution backgrounds as large as you want! Though of course
+the bigger they go, the slower they'll run, but just give it a try and see what
+you can find.
+
+I am not going to explain the code in the webgl widget just yet for a few
+reasons. First, I'm really happy with how the final product turned out, but the
+code is a wreck, organizationally! And anyway, most of it is boilerplate to get
+the webgl connected and up and running, and the parts that aren't boilerplate
+aren't substantially different from the code I've shown in vanilla javascript
+over the course of this post.
+
+I hacked together this widget using
+
+- [https://webglfundamentals.org](https://webglfundamentals.org)
+
+The author [Greggman](https://github.com/greggman) also maintains a library called
+[twgl.js](http://twgljs.org/) for making the WebGL api less verbose and I am
+definitely going to use it next time.
+
+- [https://www.shadertoy.com/view/4df3Rn](https://www.shadertoy.com/view/4df3Rn)
+
+Íñigo Quílez, who created [shadertoy](https://www.shadertoy.com/), also
+practically has the [market cornered on Mandelbrot
+renders](https://www.shadertoy.com/results?query=mandelbrot). The link above
+served as both inspiration for this whole thing (wait... we can compute in
+realtime now?) and model while porting my js code over to webgl. I have that
+shader to thank for that incredible coloring function that I used as the base
+of mine; I'm still not entirely sure how it works.
+
+A few caveats- this isn't really designed for mobile. UX wise it's definitely
+not, but more importantly mobile platforms don't seem to have the same caliber
+of graphics processing as a lap or desktop. This isn't really a huge surprise;
+you might be able to get it to render something, but no promises.
+
+Also, unfortunately, current
+[GLSL](https://en.wikipedia.org/wiki/OpenGL_Shading_Language) only natively
+supports 32 bit floats for use on the gpu, so we run out of precision
+relatively quickly on the widget. You can barely see where the pixels become
+blockish at the highest zooms, but don't be mistaken- this is not the end of
+the set- the set goes on _forever._ There are techniques to work around this
+and achieve a higher precision, but my mandelbrot bike shed doesn't need
+_another_ coat of paint before shipping. I'll likely try to get around to that
+sometime, or just put it off until 64 bit floats are native to the platform!
+
+![img](http://i.imgur.com/3QwnPZD.png)
+<hr>
+
+
+<span id="references"></span>
+
+References
+==========
+
+Here are some things I found really helpful while working on this project.
+
+- [Holly Krieger's explanation of the set on Numberphile](https://www.youtube.com/watch?v=NGMRB4O922I)
+
+- [This documentary excerpt featuring Benoit Mandelbrot himself](https://www.youtube.com/watch?v=56gzV0od6DU)
+
+- [This deep zoom video accompanied by Jonathan Coulton's song "Mandelbrot Set"](https://www.youtube.com/watch?v=56gzV0od6DU)
+
+- [Fractals: an animated discussion](https://searchworks.stanford.edu/view/dd592sd0866)
+
+Unfortunately the last one is probably the best but I haven't been able to find
+it online anywhere. The one I saw was loaned to me by fellow fractal enthusiast
+and Etsian [Paul-Jean Letourneau](http://paul-jean.github.io/). Thanks Paul-Jean!
+
+Also thanks to [Julia Evans](https://jvns.ca/) for talking me through some of
+the math early on and helping me with my complex number algebra that I kept
+messing up and which produced weird blobs on the canvas.
+
+I hope this was interesting. I'm going to shut off my computer for the rest of
+the day now. I've been thinking of picking one day a week and not looking at
+any screens, or at least not staring at the computer screen for the whole day.
