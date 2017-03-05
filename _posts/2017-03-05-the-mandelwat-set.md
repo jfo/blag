@@ -1,6 +1,7 @@
 ---
 title:  The Mandelwat Set
 layout: post
+date: 2017-03-05
 ---
 
 <script>
@@ -1853,9 +1854,17 @@ Here are some things I found really helpful while working on this project.
 
 - [Holly Krieger's explanation of the set on Numberphile](https://www.youtube.com/watch?v=NGMRB4O922I)
 
-- [This documentary excerpt featuring Benoit Mandelbrot himself](https://www.youtube.com/watch?v=56gzV0od6DU)
+- [This documentary excerpt featuring Benoit Mandelbrot](https://www.youtube.com/watch?v=56gzV0od6DU)
 
-- [This deep zoom video accompanied by Jonathan Coulton's song "Mandelbrot Set"](https://www.youtube.com/watch?v=56gzV0od6DU)
+- [Mandelbrot's Ted talk about roughness from 2010](https://www.youtube.com/watch?v=56gzV0od6DU)
+
+- [This deep zoom video accompanied by Jonathan Coulton's song "Mandelbrot Set"](https://www.youtube.com/watch?v=ZDU40eUcTj0)
+
+- [This JavaScript Mandelbrot generator](http://tilde.club/~david/m/#zoom=6.2260371959942775,3.4&lookAt=-0.6,0&iterations=85&superSamples=1&escapeRadius=10.0&colorScheme=pickColorGrayscale)
+
+- [This wikihow.com page (I know right? But it was helpful early on!)](http://www.wikihow.com/Plot-the-Mandelbrot-Set-By-Hand)
+
+- [This collection of interesting coordinates I used for testing.](http://www.cuug.ab.ca/dewara/mandelbrot/Mandelbrowser.html)
 
 - [Fractals: an animated discussion](https://searchworks.stanford.edu/view/dd592sd0866)
 
