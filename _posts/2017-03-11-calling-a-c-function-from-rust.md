@@ -136,8 +136,8 @@ that can be linked into other programs.
 What does that `.o` file look like?
 
 ```
-P`λPUHå}ü}üÁçø]ÃzRxλ$¨ÿÿÿÿÿÿÿAC
-_doubler
+Ïúíþ^G^@^@^A^C^@^@^@^A^@^@^@^D^@^@^@°^A^@^@^@ ^@^@^@^@^@^@^Y^@^@^@8^A^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@x^@^@^@^@^@^@^@Ð^A^@^@^@^@^@^@x^@^@^@^@^@^@^@^G^@^@^@^G^@^@^@^C^@^@^@^@^@^@^@__text^@^@^@^@^@^@^@^@^@^@__TEXT^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^Q^@^@^@^@^@^@^@Ð^A^@^@^D^@^@^@^@^@^@^@^@^@^@^@^@^D^@<80>^@^@^@^@^@^@^@^@^@^@^@^@__compact_unwind__LD^@^@^@^@^@^@^@^@^@^@^@^@^X^@^@^@^@^@^@^@ ^@^@^@^@^@^@^@è^A^@^@^C^@^@^@H^B^@^@^A^@^@^@^@^@^@^B^@^@^@^@^@^@^@^@^@^@^@^@__eh_frame^@^@^@^@^@^@__TEXT^@^@^@^@^@^@^@^@^@^@8^@^@^@^@^@^@^@@^@^@^@^@^@^@^@^H^B^@^@^C^@^@^@^@^@^@^@^@^@^@^@^K^@^@h^@^@^@^@^@^@^@^@^@^@^@^@$^@^@^@^P^@^@^@^@^K
+^@^@^@^@^@^B^@^@^@^X^@^@^@P^B^@^@^A^@^@^@`^B^@^@^L^@^@^@^K^@^@^@P^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^A^@^@^@^A^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@UH<89>å<89>}ü<8b>}üÁç^A<89>ø]Ã^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^Q^@^@^@^@^@^@^A^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^T^@^@^@^@^@^@^@^AzR^@^Ax^P^A^P^L^G^H<90>^A^@^@$^@^@^@^\^@^@^@¨ÿÿÿÿÿÿÿ^Q^@^@^@^@^@^@^@^@A^N^P<86>^BC^M^F^@^@^@^@^@^@^@^@^@^@^@^A^@^@^F^A^@^@^@^O^A^@^@^@^@^@^@^@^@^@^@^@_doubler^@^@^@
 ```
 
 Yeah, so like, of course that's a bunch of unprintable junk mostly, because
@@ -151,7 +151,7 @@ I can link all these together simply by supplying all the names to `clang`.
 clang main.c doubler.o
 ```
 
-produces an `a.out` file that when executed prints `2`. Go team.
+produces an `a.out` file that when executed prints `2`.
 
 So how do I do this from Rust, in the most basic way?
 
@@ -174,10 +174,10 @@ error[E0425]: unresolved name `doubler`
      error: aborting due to previous error
 ```
 
-I already know that I can't do the equivalent of `#include "doubler.c" or
-`#include "doubler.h"`, because those don't make any sense in this context.. I
+I already know that I can't do the equivalent of `#include "doubler.c"` or
+`#include "doubler.h"`, because those don't make any sense in this context. I
 also know that what I need to do is direct the compiler to expect the symbol
-`doubler` to be link _to_. I want, basically, the rust equivalent of what
+`doubler` to be linked _to_. I want, basically, the rust equivalent of what
 exists in the C header file, just the function signature.
 
 That equivalent can be put into an `extern` block, like this:
