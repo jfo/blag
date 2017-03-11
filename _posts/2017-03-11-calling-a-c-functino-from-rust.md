@@ -1,6 +1,7 @@
 ---
-title: Rust ffi
+title: Calling a C function from Rust
 layout: post
+date: 2017-03-11
 ---
 
 Today I went to a Rust meetup. I had some ideas of what I might work on, but
@@ -306,7 +307,9 @@ and [this](https://doc.rust-lang.org/book/advanced-linking.html) for more
 thorough, idiomatic info. Afaict, the more normal way to do this kind of
 thing would be to link against installed libraries or use [cargo and a
 build script](http://doc.crates.io/build-script.html) to codify how the
-external deps should be handled.
+external deps should be handled.  My sense is that the `link` attributes in the
+Rust ffi docs do something at the end of the pipe that isn't wholly different
+from what I've done directly above by calling `rustc` with some flags.
 
 Also, I asked at the beginning of this post- "What does it mean to call a C
 function from Rust?" I hope it's pretty clear that when you do something like
@@ -318,6 +321,7 @@ code in those object files that came from a separate compiler step. From that pe
 
 It works, though! And it is proof that it's rudimentarily not that hard to link
 together compiled outputs from different languages as long as you know the
-right incantations and have a sense of what it actually means to do that.
+right incantations and have a sense of what it actually means to do that. 
 
-I am looking forward to learning more about this and learning the "right way" to do it!
+I am looking forward to learning more about this and learning the "right way"
+to do it!
