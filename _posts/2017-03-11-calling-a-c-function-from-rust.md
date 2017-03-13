@@ -101,7 +101,7 @@ int main() {
 }
 ```
 ```
-clang doubler.c
+clang main.c
 ```
 
 Aha.
