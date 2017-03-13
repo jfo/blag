@@ -133,6 +133,11 @@ library'). I am not sure of the distinction if any between these suffixes, but
 the basic idea is that the file contains machine code designated by symbols
 that can be linked into other programs.
 
+> Update: good [feedback on
+> Twitter](https://twitter.com/dev_console/status/841071717166534661)
+> elucidated this distinction some, and [Julia](https://jvns.ca/) pointed me to
+> a [much more in depth resource](https://lwn.net/Articles/276782/)
+
 What does that `.o` file look like?
 
 ```
