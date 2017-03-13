@@ -18,6 +18,7 @@ ok.  Foreign Function Interface. Ok.
 So, first I make a C file that has a single, simple function declaration and a `main` that uses it, and nothing else.
 
 ```c
+// main.c
 #include <stdio.h>
 
 int doubler(int x) {
@@ -31,8 +32,8 @@ int main() {
 ```
 
 ```
-clang doubler.c
-./doubler
+clang main.c
+./a.out
 ```
 
 Produces, as you would expect,
@@ -66,8 +67,8 @@ int main() {
 This also "just works"
 
 ```
-clang doubler.c
-./doubler
+clang main.c
+./a.out
 ```
 
 Of course, I don't want to `#include "doubler.c"`, because of reasons. See
