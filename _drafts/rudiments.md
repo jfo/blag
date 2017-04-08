@@ -10,12 +10,12 @@ can point people to, especially for beginners.
 But I often find that folks can get stuck on rudimentary concepts that can
 slow them down with learning other things. This is usually not that big a deal!
 But sometimes it might be enough to derail momentum, and at an early stage,
-that can spell the end of things!
+that can spell the end of things.
 
 Sandboxed environments like Codeacademy mean well, they are just trying to hide
 a lot of the complexity of what's running what so you can focus on learning
 concepts, but I think there are some rudimentary concepts that are really,
-really important, and not really that hard to understand, that can help a lot!
+really important, and not really that hard to understand, that can help a lot.
 
 What data _is_
 --------------
@@ -23,27 +23,27 @@ What data _is_
 Everything in a computer is data. Data is `1`'s and `0`'s organized in specific
 ways and interpreted in specific ways. Everything a computer touches is data.
 
-Every file on your computer is just data, that's it. Different file formats encode things in differ
+Every file on your computer is just data, that's it. Different file formats
+encode things in different ways, but they all boil down to `1` and `0` in the
+end, at least until we get quantum computers working at a consumer pricepoint.
 
 
 Interacting with your computer.
 --------------------------
 
-The computer is a machine. Alright, yeah, everyone knows this of course! It is
-a "calculator with benefits." But we are so used to interacting with it
-graphically that it can seem like that's all there is. We click, we scroll, we
-read. When I started, the command line terrified me, and why wouldn't it? It
-seems so alien and dangerous!
+The computer is a machine... a "calculator with benefits." But we are so
+used to interacting with it graphically that it can seem like that's all there
+is. We click, we scroll, we read. When I started, the command line terrified
+me, and why wouldn't it? It seemed so alien and dangerous.
 
-You should never run a command that you don't understand or that doesn't come
-from a trusted source, but there isn't anything to be afraid of. The command
-line, or terminal, is just another way to interact with the computer, that's it!
+Of course, you should never run a command that you don't understand or that
+doesn't come from a trusted source, but there really isn't anything to be
+afraid of.  The command line, or terminal, is just another way to interact with
+the computer.
 
 There's nothing inherently better about this as compared to a graphical user
 interface (GUI) like the ones everyone who touches a computer these days is
 used to,
-
-everything is 1 and 0, ok.
 
 How do you interface with computers? We are so used to a gui, and that's fine,
 but an understanding of command line work is vital to being able to grok the
