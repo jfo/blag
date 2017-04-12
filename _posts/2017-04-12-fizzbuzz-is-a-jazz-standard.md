@@ -95,8 +95,8 @@ contours and implying the structure of the melody while playing inside of and
 around the harmony.
 
 Here's guitarist Gilad Hekselman demonstrating this concept in a workshop over
-the tune "[It could happen to
-you](https://www.youtube.com/watch?v=MtWpgWjxouY)" ... listen to how he builds
+the tune "[It Could Happen to
+You](https://www.youtube.com/watch?v=MtWpgWjxouY)" ... listen to how he builds
 up a vocabulary that seems to belong just to this song over the course of
 a few choruses, each one getting a little bit further afield but maintaining
 the central cohesiveness of the overarching motive:
@@ -291,3 +291,7 @@ though, if you're interested. Obviously this is pretty limited and not intended
 to be a survey of jazz history or styles or anything, but just to illustrate
 the concepts I was trying to get at.
 
+Thanks to [Lindsay Kuper](https://twitter.com/lindsey), [Jake
+Voytko](https://twitter.com/jakevoytko), [Eric
+Hirsh](http://www.erichirsh.com/), and the other folks who helped me think
+through this post in draft form.
