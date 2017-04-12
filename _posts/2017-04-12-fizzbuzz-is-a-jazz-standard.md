@@ -1,6 +1,7 @@
 ---
 title: Fizzbuzz is a Jazz Standard
 layout: post
+date: 2017-04-12
 ---
 
 
@@ -96,15 +97,20 @@ around the harmony.
 Here's guitarist Gilad Hekselman demonstrating this concept in a workshop over
 the tune "[It could happen to
 you](https://www.youtube.com/watch?v=MtWpgWjxouY)" ... listen to how he builds
-up a vocabulary that seems to belong just to this tune over the course of a few
-choruses, each one getting a little bit further afield but maintaining the
-central cohesiveness of the overarching motive:
+up a vocabulary that seems to belong just to this song over the course of
+a few choruses, each one getting a little bit further afield but maintaining
+the central cohesiveness of the overarching motive:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jTg3VV5v-jM?start=76&rel=0" frameborder="0" allowfullscreen></iframe>
 
 Listen to how he bobs and weaves around the structure of the song but is always
 hinting back at the melody, maintaining that thread, reinforcing that shape. It
 gets pretty out there, but it's still the same song.
+
+Sonny Rollins is an acknowledged master of this type of thematic improvisation.
+Here's an excellent
+[paper](http://jazzstudiesonline.org/files/jso/resources/pdf/SonnyRollinsAndChallengeOfThematicImprov.pdf)
+by Gunther Schuller discussing him in this context.
 
 The 'standard' way to play standards is to play the melody first (the 'head')
 and then to improvise over the form of the song, possibly taking turns, and
@@ -220,7 +226,9 @@ they just happen on different time scales. What I'm trying to get at is the
 sense of play, the chasing down of an idea just for the fun of it, or for the
 shape of it, or for the challenge of it.  Are these things necessary? No, of
 course not. Programming can be aesthetic, and it can be playful, and in a sense
-it can be improvisatory too.
+it can be improvisatory too. Just because something is a solved problem, and
+certainly fizzbuzz and 8-queens are solved problems, doesn't mean it's not
+worth spending time on them for creativity's and learning's sakes.
 
 How about Conway's Game of Life? Here's a demonstration of an implementation of
 that in [APL](http://www.youtube.com/watch?v=a9xAKttWgP4). I must have watched
@@ -230,15 +238,16 @@ The change counting problem from [Structure and Interpretation of Computer
 Programs](https://mitpress.mit.edu/sicp/full-text/sicp/book/node16.html) is a
 good candidate, as is the related [n'th
 stair](http://www.geeksforgeeks.org/count-ways-reach-nth-stair/) problem. There
-are a lot of them!
+are a lot!
 
-I don't know exactly how to better describe the qualities that make a problem feel
-like a 'standard,' and I suspect that they are different for different people
-with different backgrounds, too. Just like a fusion musician might have a
-different set of songs they know backwards and forwards, a graphics programmer
-might consider a ray tracer to be a standard... a language designer might
-consider a lisp interpreter to be one. I know that a lot of these tasks could
-be interview problems, too, but that's also not a complete overlap.
+I don't know exactly how to best describe the qualities that make a problem or
+puzzle or task feel like a 'standard,' and I suspect that they are different
+for different people with different backgrounds, too. Just like a fusion
+musician might have a different set of songs they know backwards and forwards,
+a graphics programmer might consider a ray tracer to be a standard... a
+language designer might consider a lisp interpreter to be one. I know that a
+lot of these tasks could be interview problems, too, but that's also not a
+complete overlap.
 
 I'm very interested to hear what people think about what exactly falls into this category!
 
@@ -265,7 +274,7 @@ The author quotes the verse and goes on:
 > to be exactly as it should be. These craftsmen did not relax their thoughtful
 > self-discipline even with respect to features of their work which would
 > ordinarily not be visible.  Although no one would notice if those features were
-> not quite right, the craftsmen would be bothered by their consciences
+> not quite right, the craftsmen would be bothered by their consciences.
 
 I'll leave you with my [own](https://github.com/jfo/sild/blob/master/examples/fizzbuzz.sld)
 [versions](https://jefffowler.bandcamp.com/track/bye-bye-blackbird) of some [old](http://wiki.c2.com/?FizzBuzzTest)
@@ -282,7 +291,3 @@ though, if you're interested. Obviously this is pretty limited and not intended
 to be a survey of jazz history or styles or anything, but just to illustrate
 the concepts I was trying to get at.
 
-Also, Sonny Rollins was a master of the type of thematic improvisation I'm
-talking about. Here's an excellent
-[paper](http://jazzstudiesonline.org/files/jso/resources/pdf/SonnyRollinsAndChallengeOfThematicImprov.pdf)
-by Gunther Schuller discussing him in this context.
