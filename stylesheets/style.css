@@ -54,9 +54,11 @@ code {
 }
 
 blockquote {
+    font-style: italic;
     padding: 0 15px;
-    color: #777;
-    border-left: 2px solid #ddd;
+    margin: 2em 0;
+    color: #888;
+    border-left: 4px solid #ddd;
 }
 
 img, canvas {
@@ -80,20 +82,6 @@ iframe {
 
 .content hr {
     width: 30%;
-}
-
-@media (min-width : 550px) {
-
-    img { max-width: 80%; }
-
-}
-
-@media (min-width : 800px) {
-    img { max-width: 70%; }
-}
-
-@media (min-width : 1000px) {
-    img { max-width: 60%; }
 }
 
 time {

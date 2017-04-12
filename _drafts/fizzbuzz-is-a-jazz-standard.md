@@ -1,12 +1,11 @@
 ---
-title: FizzBuzz is a Jazz Standard
+title: Fizzbuzz is a Jazz Standard
 layout: post
 ---
 
 
-[Jeff Atwood](https://twitter.com/codinghorror), of [Coding
-Horror](https://blog.codinghorror.com/) fame, wrote a blogpost called "[Why
-Can't Programmers..
+Jeff Atwood, of Coding Horror fame, wrote a blogpost called "[Why Can't
+Programmers..
 Program?](https://blog.codinghorror.com/why-cant-programmers-program/)", by a
 happy coincidence nearly exactly 10 years ago.
 
@@ -24,7 +23,7 @@ enough to allow a quick repeat here:
 
 I've long been fascinated by this post, having read it very early on in
 learning to program myself, and coming away heartened about my chances of being
-"up to snuff" after solving FizzBuzz over beers one night while exploring the
+"up to snuff" after solving fizzbuzz over beers one night while exploring the
 idea of a career change with a programmer friend.
 
 At the time, I was incredulous that that was all it might take to prove a
@@ -46,7 +45,7 @@ Heaven](https://blog.codinghorror.com/fizzbuzz-the-programmers-stairway-to-heave
 > solvers.
 
 Indeed. There are _so many_ solutions, in all manner of languages. They mostly
-look the same because of course they do- it is, after all, just FizzBuzz, ffs, right?
+look the same because of course they do- it is, after all, just Fizzbuzz, ffs, right?
 There is a spin off Discourse thread called [FizzBuzz Solution
 Dumping
 Ground](https://discourse.codinghorror.com/t/fizzbuzz-solution-dumping-ground/1752)
@@ -55,13 +54,196 @@ insecurities](https://discourse.codinghorror.com/t/fizzbuzz-the-programmers-stai
 some of them carry a light stink of what you might call '[smug
 asshole](https://discourse.codinghorror.com/t/fizzbuzz-solution-dumping-ground/1752/73)',
 even while kowtowing to the snipe hunt. The most recent post is from March 6, 2017. An
-incredible ten whole years of FizzBuzz.
+incredible ten whole years of Fizzbuzz.
 
 It _is_ a little weird, really... why _do_ so many people respond to the post
 as if it's a challenge?
 
-Programming as a craft, as an aesthetic discipline.
---------------------------------------------------
+Improvisation and Levity
+-----------------------
+
+Jazz is an old form, now, or at least it is heading there. [The Great American
+Songbook](https://en.wikipedia.org/wiki/Great_American_Songbook) still has
+_some_ room for additions, but rarely accepts them, and it is generally thought
+of as being canonical, and at this point, historical.
+
+These capital-S Standards are standards because they are well known, having originally
+come from the pop music of the day. As jazz tunes, they serve as
+improvisational vehicles, providing the structure and outline inside of which
+an improvising musician can play extemporaneously. They remain standards in that
+capacity by serving as a common repertoire between jazz musicians, regardless
+of their differing backgrounds or generations or usually even jazz styles.
+
+This type of lyric standard is just one type of jazz music, of course. We learn
+the melody, it's easy, it's hummable, it comes out _kind of_ the same way each
+time. The melodies are poppy, memorable, and in many cases quite simple, in
+contrast to the often frenetic bebop standards, or modal tunes, or maybe latin
+big band, or fusion... the subgenre list could continue indefinitely.
+
+But lyric standards like the ones in the Great American songbook provide a
+template for the whole endeavor, a sort of blueprint for how to improvise over
+_any_ tune. They're often used as [pedagogical
+tools](https://www.youtube.com/watch?v=e3vL8guiFFM&list=RDe3vL8guiFFM#t=7) and
+as some of the first songs young musicians become acquainted with, while still
+remaining perennial set list favorites for musicians of the highest
+caliber.
+
+A great improvisation will not just be riffs over the chord changes. The real
+goal is to move and flow with the implicit melodic outline, following the
+contours and implying the structure of the melody while playing inside of and
+around the harmony.
+
+Here's guitarist Gilad Hekselman demonstrating this concept in a workshop over
+the tune "[It could happen to
+you](https://www.youtube.com/watch?v=MtWpgWjxouY)" ... listen to how he builds
+up a vocabulary that seems to belong just to this tune over the course of a few
+choruses, each one getting a little bit further afield but maintaining the
+central cohesiveness of the overarching motive:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jTg3VV5v-jM?start=76&rel=0" frameborder="0" allowfullscreen></iframe>
+
+Listen to how he bobs and weaves around the structure of the song but is always
+hinting back at the melody, maintaining that thread, reinforcing that shape. It
+gets pretty out there, but it's still the same song.
+
+The 'standard' way to play standards is to play the melody first (the 'head')
+and then to improvise over the form of the song, possibly taking turns, and
+then to end the tune by playing the 'head out', recapitulating the melody a
+final time. But it doesn't necessarily have to be that way. One of my favorite
+records is from Lee Konitz, recorded in 1961, called "Motion." Lee is from a
+different school, a little more deconstructive. Even back then
+he was just launching _right into_ the improvisation, as if to say "alright
+alright we all know this tune lets get on with it."
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A5tT00jXEkU?rel=0" frameborder="0" allowfullscreen></iframe>
+
+He actually doesn't even play the melody _at all_ until the very very end-
+practically at the last second... starting at about 7:39, and even then it's
+sparse- just one `A` section and a few flutters and that's it.
+
+I'll permit that this is pretty inside baseball and winky. Not everyone
+listening knows the song, and certainly not everyone can hear the changes
+happening underneath the improvisation and place the song just by that. But
+it's also really cool!
+
+I photographed Lee Konitz in his apartment once for a magazine article. When we
+got there we asked him what he had been practicing that day. "[All the things
+you are](https://www.youtube.com/watch?v=PhBQd2VMWzA)" he said. He's been
+playing that old song for _decades_, and he's _still_ playing it.
+
+<img src="https://c1.staticflickr.com/4/3027/5759834284_10d0bd10d6.jpg" alt="Lee Konitz in his apartment">
+
+Fizzbuzz is _not_ a hard problem. It's an _easy_ problem. You have to know what
+you're doing to program Fizzbuzz in the same way you have to know what you're
+doing to program anything... you need to know your tools and have a functional
+mental model of programming and understand some rudimentary control flow
+concepts. If Fizzbuzz as a task is testing anything at all, it's really testing
+_that_, and that's fine. Fizzbuzz is easy, sure, but it's also not entirely
+dissimilar to workaday programming tickets I might see from time to time.
+"Filter out users who aren't signed in and redirect them to the login page"
+maybe, or "catch these two exceptions for special treatment and disregard any
+others thrown," or any number of other things. These types of tickets also
+aren't necessarily _difficult_, but they're certainly a part of my day to day
+life.
+
+But I think there's more to it than that.
+
+Fizzbuzz is a melody; it's a short and easy to remember little song. Much like a
+simple tune can become an ideal vehicle for improvisation and caprice precisely
+_because_ it's a simple tune, and not in spite of it, there is something about
+the structure and simplicity of fizzbuzz that gets you thinking... what if I
+did it like this? or that? or I wonder if I could do it using that other thing...
+
+Have you seen [FizzBuzz Enterprise
+Edition](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition)
+from Enterprise Quality Coding? It's a hoot. There are 99 files in that repo,
+and they're [still receiving pull
+requests](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition/pulls).
+And yeah, last time I checked at least, it ran.
+
+[The Recurse Center](https://www.recurse.com/) uses Fizzbuzz during its
+prelimenary [application process](https://www.recurse.com/apply) both as a
+screening question and as an opportunity for displaying creativity, although they've
+changed the terms to 'CracklePop' to thwart would be plagiarizers.
+
+I'll admit, now, that despite my waxing on _why_ so many people responded to that
+post with fizzbuzz solutions, [I couldn't resist it any better than they
+could](https://discourse.codinghorror.com/t/fizzbuzz-solution-dumping-ground/1752/192).
+
+The Great Programmer Song Book
+------------------------------
+
+Fizzbuzz isn't alone in this song book, far from it. It belongs to a subclass of
+programming problems that have this some kind of, for lack of a better word,
+'poppiness' to them. They may be but don't have to be easy to complete, but
+they're memorable for sure... easy to 'hum.'
+
+Another like this is the eight queens problem:
+
+> Place eight queens on an 8 by 8 chessboard so that no two queens threaten each other.
+
+There are 92 and only 92 ways to do this. The problem could be "find one
+solution" or it could be "find all solutions" or it could be "find all
+solutions that are not rotations of any previously found solutions." It could
+be generalized to be the "n-queens" problem...
+
+> Place _n_ queens on an _x_ by _y_ chessboard so that no two queens threaten each other.
+
+You could allow the chess board to be a non-rectangular shape, or it could
+be 3 dimensions, or it could be `n` dimensions. You could code golf it, you
+could try to get it to run as fast as possible, you could subject yourself to
+arbitrary constraints in the language you're using just to see if you can do
+it.  It's naturally a recursive problem, but you could solve it iteratively.
+
+There are _tons_ of ways to play through this song, but the melody is always
+there.
+
+[Here's a solution by David
+Dalrymple](http://davidad.github.io/blog/2014/02/25/overkilling-the-8-queens-problem/)
+written directly in x86 Assembly that may very well run faster than any other
+solution ever.
+
+[Here's one by Andree Monette](http://acmonette.com/here-there-be-pydras.html)
+that uses Python's garbage collector as a computational stack and produces the
+correct value on exit of the program.
+
+Wouldn't you know it, [here's one by
+Aphyr](https://aphyr.com/posts/342-typing-the-technical-interview) posted not
+but a couple of days ago that... well I'll let that one speak for itself.
+
+There are _so many_ ways to solve it, to 'improvise' around the 'melody.'
+Improvise might be a strange word to hear in this context, as it tends to imply
+performance, or at least making things up in the moment, on the spot. But
+really, that's inconsequential. Improvisation and composition are not exactly the same
+thing, but they are inextricable, they have a _lot_ in common with each other,
+they just happen on different time scales. What I'm trying to get at is the
+sense of play, the chasing down of an idea just for the fun of it, or for the
+shape of it, or for the challenge of it.  Are these things necessary? No, of
+course not. Programming can be aesthetic, and it can be playful, and in a sense
+it can be improvisatory too.
+
+How about Conway's Game of Life? Here's a demonstration of an implementation of
+that in [APL](http://www.youtube.com/watch?v=a9xAKttWgP4). I must have watched
+that video a dozen times and it still melts my brain.
+
+The change counting problem from [Structure and Interpretation of Computer
+Programs](https://mitpress.mit.edu/sicp/full-text/sicp/book/node16.html) is a
+good candidate, as is the related [n'th
+stair](http://www.geeksforgeeks.org/count-ways-reach-nth-stair/) problem. There
+are a lot of them!
+
+I don't know exactly how to better describe the qualities that make a problem feel
+like a 'standard,' and I suspect that they are different for different people
+with different backgrounds, too. Just like a fusion musician might have a
+different set of songs they know backwards and forwards, a graphics programmer
+might consider a ray tracer to be a standard... a language designer might
+consider a lisp interpreter to be one. I know that a lot of these tasks could
+be interview problems, too, but that's also not a complete overlap.
+
+I'm very interested to hear what people think about what exactly falls into this category!
+
+Code as Craft / Coda
+---------------------
 
 I came across a
 [Longfellow](https://en.wikipedia.org/wiki/Henry_Wadsworth_Longfellow) verse
@@ -85,193 +267,22 @@ The author quotes the verse and goes on:
 > ordinarily not be visible.  Although no one would notice if those features were
 > not quite right, the craftsmen would be bothered by their consciences
 
+I'll leave you with my [own](https://github.com/jfo/sild/blob/master/examples/fizzbuzz.sld)
+[versions](https://jefffowler.bandcamp.com/track/bye-bye-blackbird) of some [old](http://wiki.c2.com/?FizzBuzzTest)
+[songs](https://www.youtube.com/watch?v=qhdHky_zoyQ).
 
-Improvisation and Levity
------------------------
+References
+==========
 
-Jazz is an old form, now, or at least it is heading there. [The Great American
-Songbook](https://en.wikipedia.org/wiki/Great_American_Songbook) still has
-_some_ room for additions, but rarely accepts them, and it is generally thought
-of as being canonical, and at this point, historical.
+As I was writing this post I found myself linking to a ton of youtube videos of
+music. It got a little overwhelming, so I pared it down quite a bit. I've [put
+them all in this
+playlist](https://www.youtube.com/playlist?list=PLVm2QnrDZ4RSqtJw_m5dsrT0HRc40La7q)
+though, if you're interested. Obviously this is pretty limited and not intended
+to be a survey of jazz history or styles or anything, but just to illustrate
+the concepts I was trying to get at.
 
-These capital-S Standards are standards because they are well known, having originally
-come from the pop music of the day. As jazz tunes, they serve as
-improvisational vehicles, providing the structure and outline inside of which
-an improvising musician can play extemporaneously. They remain standards in that
-capacity by serving as a common repertoire between jazz musicians, regardless
-of their differing backgrounds or generations or usually even jazz styles.
-
-This type of lyric standard is just one type of jazz music, of course. We learn the
-melody, it's easy, it's hummable, it comes out _kind of_ the same way each
-time. The melodies are [poppy](https://www.youtube.com/watch?v=4P0hG3sD0-E),
-[memorable](https://www.youtube.com/watch?v=CJTMZlRrtlE), and in many cases
-quite simple, in contrast to the often frenetic
-[bebop](https://www.youtube.com/watch?v=02apSoxB7B4) standards, or [modal
-tunes](https://www.youtube.com/watch?v=03juO5oS2gg), or ... TODO more maybe latin big band, fusion...
-
-But lyric standards like the ones in the Great American songbook provide a
-template for the whole endeavor, a sort of blueprint for how to improvise over
-_any_ tune. They're often used as [pedagogical
-tools](https://www.youtube.com/watch?v=e3vL8guiFFM&list=RDe3vL8guiFFM#t=7) and
-as some of the [first songs](https://www.youtube.com/watch?v=8CUEl0TLem0) young
-musicians become acquainted with, while still remaining perennial set list
-favorites for [musicians](https://www.youtube.com/watch?v=6aigTR-riJc) of the
-[highest caliber](https://www.youtube.com/watch?v=u37RF5xKNq8).
-
-A great improvisation will not just be riffs over the chord changes. The real
-goal is to move and flow with the implicit melodic outline, following the
-contours and implying the structure of the melody while playing inside of and
-around the harmony. [Sonny
-Rollins](http://jazzstudiesonline.org/files/jso/resources/pdf/SonnyRollinsAndChallengeOfThematicImprov.pdf)
-was a master of this type of thematic improvisation,
-
-
-Here's Sonny on one of his more famous tunes, 'St. Thomas', on a live TV
-performance:
-
-https://www.youtube.com/watch?v=v4DTR0I7xhA
-
-You can hear the basic building blocks in the statement of the song, Sonny builds up a solo from there.
-
-Here's guitarist Gilad Hekselman demonstrating this concept in a workshop over
-the tune "[It could happen to
-you](https://www.youtube.com/watch?v=WfGcJ-0Yr84)" ... listen to how he builds
-up a vocabulary that seems to belong just to this tune over the course of a few
-choruses, each one getting a little bit further afield but maintaining the
-central cohesiveness of the overarching motive:
-
-https://youtu.be/jTg3VV5v-jM?t=1m16s
-
-Listen to how he bobs and weaves around the structure of the song but is always
-hinting back at the melody, maintaining that thread, reinforcing that shape.
-
-The 'standard' way to play standards is to play the melody first (the 'head')
-and then to improvise over the form of the song, possibly taking turns, and
-then to end the tune by playing the 'head out', recapitulating the melody a
-final time. But it doesn't necessarily have to be that way. One of my favorite
-records is from Lee Konitz, recorded in 1961, called "Motion." Lee's from a
-different school, a little more pomo, a little deconstructive. Even back then
-he was just launching right into the improvisation, as if to say "alright
-alright we all know this tune lets get on with it."
-
-[Lee Konitz](https://www.youtube.com/watch?v=A5tT00jXEkU)
-
-He actually doesn't even play the melody _at all_ until the very very end- practically at the
-last second... starting at about 7:39, and even then it's pretty sparse- just one
-A section and a few flutters and that's it.
-
-I'll permit that this is pretty inside baseball and winky. Not everyone
-listening knows the song, and certainly not everyone can hear the changes
-happening underneath the improvisation and place the song just by that. But
-it's also really cool!
-
-Here's a more conventional version of that tune, melody clearly stated and even
-arranged:
-
-[Cannonball Adderly](https://www.youtube.com/watch?v=ySrjb-rFvEQ)
-
-
-I photographed Lee Konitz in his apartment once for a magazine article. When we
-got there we asked him what he had been practicing that day. "[All the things
-you are](https://www.youtube.com/watch?v=PhBQd2VMWzA)" he said. He's been
-playing that old song for
-[decades](https://www.youtube.com/watch?v=FGytJW8vpRA), and he's [still playing
-it](https://www.youtube.com/watch?v=ptK2C5G9ruU).
-
-https://www.flickr.com/photos/monkeywithamirror/5759834284/in/photolist-9LYE4E
-
-Fizzbuzz is _not_ a hard problem. It's an _easy_ problem. You have to know what
-you're doing to program fizzbuzz in the same way you have to know what you're
-doing to program anything... you need to know your tools and have a functional
-mental model of programming and understand some rudimentary control flow
-concepts. If fizzbuzz as a task is testing anything at all, it's really testing
-_that_, and that's fine. Fizzbuzz is easy, sure, but it's not entirely dissimilar to workaday
-programming tickets I might see from time to time. "Filter out users who aren't
-signed in and redirect them to the login page" maybe, or "catch these two
-exceptions for special treatment and disregard any others thrown," or any
-number of other things. These types of tickets also aren't necessarily
-_difficult_, but they're certainly part of my day to day life.
-
-But I think there's more to it than that.
-
-Fizzbuzz is a melody; it's a short and easy to remember little song. Much like a
-simple tune can become an ideal vehicle for improvisation and caprice precisely
-_because_ it's a simple tune, and not in spite of it, there is something about
-the structure and simplicity of FizzBuzz that gets you thinking... what if I
-did it like this? or that? or I wonder if I could do it with that other thing
-hmm....
-
-I'll admit, now, that despite my waxing on _why_ so many people responded to that
-post with fizzbuzz solutions, [I couldn't resist it any better than they
-could](https://discourse.codinghorror.com/t/fizzbuzz-solution-dumping-ground/1752/191).
-(Here's [an explanatory post](http://blog.jfo.click/fizzbuzz-in-brainfuck-part-one/).)
-
-The Great Programmer Song Book
-------------------------------
-
-Fizzbuzz isn't alone in this fakebook, far from it. It belongs to a subclass of
-programming problems that have that, for lack of a better word, 'poppiness' to
-them. They may be but don't have to be easy to complete, but
-memorable for sure... easy to remember, easy to 'hum.'
-
-[The Recurse Center](https://www.recurse.com/) uses Fizzbuzz during its
-prelimenary [application process](https://www.recurse.com/apply) both as a
-screening question and as an opportunity for displaying creativity, although they've
-changed the terms to 'CracklePop' to thwart would be plagiarizers (a wrinkle
-that lost me a weekend when I had to refactor my brainfuck version to print out
-the new copy...)
-
-Have you seen [FizzBuzz Enterprise
-Edition](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition)
-from Enterprise Quality Coding? It's a hoot. There are 99 files in that repo,
-and they're [still receiving pull
-requests](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition/pulls).
-And yeah, last time I checked at least, it ran.
-
-Another problem like this is the eight queens problem:
-
-> Place eight queens on an 8 by 8 chessboard so that no two queens threaten each other.
-
-There are 92 and only 92 ways to do this. The problem could be "find one
-solution" or it could be "find them all" or it could be "find all solutions
-that are not rotations of any previously found solutions." It could be
-generalized to be the "n-queens" problem...
-
-> Place _n_ queens on an x by y chessboard so that no two queens threaten each other.
-
-You could allow the chess board could be a non-rectangular shape, or it could
-be 3 dimensions, or it could be `n` dimensions. There are _tons_ of ways to
-play through this song form, but the simple melody is always there.
-
-[Here's a solution by David
-Dalrymple](http://davidad.github.io/blog/2014/02/25/overkilling-the-8-queens-problem/)
-written directly in x86 Assembly that may very well run faster than any other
-solution ever.
-
-[Here's one by Andree Monette](http://acmonette.com/here-there-be-pydras.html)
-that uses Python's garbage collector as a computational stack and produces the
-correct value on exit of the program.
-
-There are many ways to solve it. It's naturally a recursive problem, but
-you could solve it iteratively if you wanted to.
-
-Are these things important? Are they necessary? No, of course not. Programming
-can be aesthetic, and it can be playful, and it can be improvisatory too.
-
-How about Conway's Game of Life? Here's a demonstration of an implementation of
-that in [APL](http://www.youtube.com/watch?v=a9xAKttWgP4). I must have watched
-that video a dozen times and it still melts my brain.
-
-The change counting problem from [Structure and Interpretation of Computer
-Programs](https://mitpress.mit.edu/sicp/full-text/sicp/book/node16.html) is a
-good candidate, as is the related [n'th
-stair](http://www.geeksforgeeks.org/count-ways-reach-nth-stair/) problem. There
-are a lot of them!
-
-I'd like someday to compile a set of some of these "standards." The point is
-not the be a challenge, _necessarily_, but to spark ideas, to offer a canvas to
-play on, a song to play through.
-
-I'll end with my [own
-version](https://jefffowler.bandcamp.com/track/bye-bye-blackbird) of an [old
-song](https://www.youtube.com/watch?v=qhdHky_zoyQ).
+Also, Sonny Rollins was a master of the type of thematic improvisation I'm
+talking about. Here's an excellent
+[paper](http://jazzstudiesonline.org/files/jso/resources/pdf/SonnyRollinsAndChallengeOfThematicImprov.pdf)
+by Gunther Schuller discussing him in this context.
