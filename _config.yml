@@ -7,8 +7,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
 
-highlighter: none
-
 imgsrc: /images/
 
 # defaults:
